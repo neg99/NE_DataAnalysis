@@ -5637,50 +5637,18 @@ MLE оценка есть
  Это же есть постановка задачи OLS.
 \end{proof}
 
-\section{Оценка $\sigma^{2}$}
-
-Разложение дисперсии
+\section{Разложение суммы квадратов и оценка $\sigma^{2}$}
+Обозначим $\SSE = \mathrm{SSError} = \sum_{i=1}^{n}(y_{i}-\hat{y}_{i})^{2}$.
+Пусть ошибки имеют нормальное распределение $N(0,\sigma^2)$.
+Тогда, с помощью теореме Cochran можно получить (без док-ва):
 \[
-\D\eta=\E(\eta-\E\eta)^{2}=\underbrace{\E(\E(\eta\mid\xi)-\E\eta)^{2}}_{\D\E(\eta\mid\xi)}+\E(\eta-\E(\eta\mid\xi))^{2}
+\frac{\SSE}{\sigma^{2}}\sim\chi^{2}(\underbrace{n-m}_{n-k-1})
 \]
- на выборочном языке будет иметь вид
-\[
-\underbrace{\sum_{i=1}^{n}\left(y_{i}-\bar{\mathbf{y}}\right)^{2}}_{\mathrm{SSTotal}}=\underbrace{\sum_{i=1}^{n}(\hat{y}_{i}-\bar{\mathbf{y}})^{2}}_{\mathrm{SSRegr}}+\underbrace{\sum_{i=1}^{n}(y_{i}-\hat{y}_{i})^{2}}_{\mathrm{SSError}}.
-\]
-
-\begin{rem*}
-Иногда также пишут
-\[
-\mathrm{SSTotal}=\mathrm{SSEffect}+\mathrm{SSResidual},
-\]
-что ведет к неиллюзорной путанице!
-\end{rem*}
-Пусть $\eb\sim\N(\mathbf{0},\sigma^{2}\Ib)$. Тогда, по теореме Cochran,
-\begin{comment}
-Почему?
-\end{comment}
-\[
-\frac{\SST}{\sigma^{2}}\sim\chi^{2}(n-1),\quad\frac{\SSR}{\sigma^{2}}\sim\chi^{2}(\underbrace{m-1}_{k}),\quad\frac{\SSE}{\sigma^{2}}\sim\chi^{2}(\underbrace{n-m}_{n-k-1})
-\]
-{} и $\SSE\indep\SSR.$ %
-\begin{comment}
-Поскольку $\widehat{\D\eta}=1/n\cdot\sum_{i=1}^{n}\left(\eta_{i}-\bar{\mathbf{y}}\right)$,
-можно было бы оценивать $\sigma^{2}$ как $\SSE/n$ --- но ведь $\hat{y}_{i}=\E(\eta\mid\xi)\neq\bar{\y}=\E\eta.$
-\end{comment}
-\begin{comment}
-Выборка не повторная, так что нельзя считать дисперсию?
-\end{comment}
-{} ОМП оценка (асимптотическая!) для $\sigma^{2}$ --- $\SSE/n$; несмещенной
-оценкой (с поправкой на размерность) будет
+и оценкой методом подстановки для $\sigma^{2}$ будет $\SSE/n$; несмещенной
+оценкой (с поправкой на число степеней свободы) будет
 \[
 \hat{\sigma}^{2}=\frac{\SSE}{n-m}.
 \]
-
-\begin{rem*}
-Утверждение про $\SSE$ справедливо всегда при нормальном распределении
-ошибок; про $\SST$ и $\SSR$ это верно только если $\bb^{(c)}=\mathbf{0}$.
-Именно поэтому применяется $F$-критерий для проверки значимости регрессии.
-\end{rem*}
 
 \section{Проверка значимости коэффициентов линейной регрессии и доверительных
 интервалов}
@@ -5696,6 +5664,7 @@ $\hat{\bb}$ имеет тоже нормальное распределение 
 \[
 t=\frac{\hat{b}_{i}-b_{i}}{\sqrt{\D\hat{b}_{i}}}=\frac{\hat{b}_{i}}{\sqrt{\sigma^{2}((\X^{\T}\X)^{-1})_{ii}}}=\frac{\hat{b}_{i}}{\sqrt{\sigma^{2}/n\cdot\left(\S_{\mathbf{x}\mathbf{x}}^{-1}\right)_{ii}}}=\sqrt{n}\frac{\hat{b}_{i}}{\sigma\left(\S_{\mathbf{x}\mathbf{x}}^{-1}\right)_{ii}^{1/2}}\sim\N(0,1).
 \]
+Заметим, что в $(\X^{\T}\X)^{-1}$ нумерация идет от 0, а в $\S_{\mathbf{x}}$ от 1.
 Подставляя оценку $\sigma$, получают
 \[
 t=\sqrt{n}\frac{\hat{b}_{i}}{\hat{\sigma}\left(\S_{\mathbf{x}\mathbf{x}}^{-1}\right)_{ii}^{1/2}}=\sqrt{n}\frac{\hat{b}_{i}}{{\displaystyle \sqrt{\frac{\SSE}{\left(n-m\right)}}}\left(\S_{\mathbf{x}\mathbf{x}}^{-1}\right)_{ii}^{1/2}}=\dfrac{{\displaystyle \frac{\sqrt{n}\hat{b}_{i}}{\sigma\left(\S_{\mathbf{x}\mathbf{x}}^{-1}\right)_{ii}^{1/2}}}}{{\displaystyle \sqrt{\frac{\SSE}{\left(n-m\right)\sigma^{2}}}}}=\frac{\N(0,1)}{{\displaystyle \sqrt{\frac{\chi^{2}(n-m)}{n-m}}}}\sim\t(n-m).
@@ -5703,14 +5672,14 @@ t=\sqrt{n}\frac{\hat{b}_{i}}{\hat{\sigma}\left(\S_{\mathbf{x}\mathbf{x}}^{-1}\ri
 
 
 
-\subsection{Расстояние Махалонобиса}
+\subsection{Расстояние Махаланобиса}
 
 Если на прямой разброс удобно измерять стандартных отклонениях $\sigma$,
 то в многомерном пространстве аналогом такой характеристики является
-расстояние Махалонобиса.
+расстояние Махаланобиса (Mahalanobis distance).
 \begin{defn*}
 Пусть $\V$ --- неотрицательно определенная симметричная матрица;
-тогда \emph{расстояние Махалонобиса} есть
+тогда \emph{расстояние Махаланобиса} есть
 \[
 r_{M}^{2}(\x,\y;\V)=(\x-\y)^{\T}\V^{-1}(\x-\y).
 \]
@@ -5728,43 +5697,46 @@ r_{M}^{2}(\x,\y;\V)=(\x-\y)^{\T}\V^{-1}(\x-\y).
 на ковариацию, задаваемую $\V$.
 \end{rem*}
 
-\begin{rem*}
+\begin{prop*}
 Если $\xib\sim\N(\mb,\V)$, то
 \[
-r_{M}^{2}(\x,\mb;\V)=(\x-\mb)^{\T}\V^{-1}(\x-\mb)\sim\chi^{2}(m)
+r_{M}^{2}(\xib,\mb;\V)=(\xib-\mb)^{\T}\V^{-1}(\xib-\mb)\sim\chi^{2}(m)
 \]
  как сумма квадратов центрированных и нормированных нормальных случайных
-величин. Кроме того,
+величин. 
+\end{prop*}
+Действительно,
 \[
-\etab=\V^{-1/2}(\x-\mb)\sim\N(0,\Ib)\implies r_{M}^{2}(\etab,\mathbf{0};\Ib)=\etab^{\T}\etab\sim\chi^{2}(m).
+\etab=\V^{-1/2}(\xib-\mb)\sim\N(0,\Ib)\implies r_{M}^{2}(\xib,\mb;\V)=r_{M}^{2}(\etab,\mathbf{0};\Ib)=\etab^{\T}\etab\sim\chi^{2}(m).
 \]
 
-\end{rem*}
+
 
 \subsection{Доверительный эллипсоид}
 
 В одномерном случае симметричного распределения, область носителя,
 где лежит $\gamma$ всех значений распределения определяется равенством
 \[
-\P(\left|\E\xi-x\right|<\sqrt{\D\xi}c_{\gamma})=\gamma.
+\P(\left|\xi - \E\xi\right|<\sqrt{\D\xi}c_{\gamma})=\gamma.
 \]
 Т.е. как такое множество значений, что расстояние их от среднего с
 учетом стандартного отклонения меньше квантиля уровня $\gamma$. В
-случае оценки среднего $\mu_{0}$, например, получают стандартное
+случае оценки среднего $\mu_{0}$, например, получают стандартное с $\SE = \sqrt{\D\bar{x}}$
 \[
-\P\left(\frac{\left|\bar{\mathbf{x}}-\mu_{0}\right|}{\SE}<c_{\gamma}\right)=\P\left(-c_{\gamma}<\sqrt{n}\frac{\bar{\mathbf{x}}-\mu_{0}}{\sigma}<c_{\gamma}\right),\quad\sqrt{n}\frac{\bar{\mathbf{x}}-\mu_{0}}{\sigma}\sim\N(0,1)
+\P\left(\frac{\left|\bar{x}-\mu_{0}\right|}{\SE}<c_{\gamma}\right)=
+\P\left(-c_{\gamma}<\sqrt{n}\frac{\bar{x}-\mu_{0}}{\sigma}<c_{\gamma}\right),\quad\sqrt{n}\frac{\bar{x}-\mu_{0}}{\sigma}\sim\N(0,1)
 \]
 так что $c_{\gamma}=\qnt_{\N(0,1)}\gamma$.
 
-Аналогично можно нарисовать эллипсоид, в который помещается выборка
+Аналогично можно нарисовать $m$-мерный эллипсоид, в который помещается выборка
 с точностью $\gamma$. %
 \begin{comment}
 $\SD$? $\SD$ --- матрица ковараций (корень ея)?
 \end{comment}
 {} Расстояние с учетом ковариации будет задаваться соответственно параметризованным
-расстоянием Махалонобиса:
+расстоянием Махаланобиса:
 \[
-\P(r_{M}^{2}(\x,\mb;\SD)<c_{\gamma})=\gamma.
+\P(r_{M}^{2}(\xib,\mb;\SD)<c_{\gamma})=\gamma.
 \]
 
 
@@ -5788,15 +5760,16 @@ r_{M}^{2}(\thb,\hat{\thb}_{n})\sim\chi^{2}(m).
 
 \section{Значимость регрессии}
 
-$H_{0}:\bb^{(c)}=\mathbf{0}$. Можно проверить тремя способами:
+$H_{0}:\bb^{(c)}=\mathbf{0}$. Напомним что $\bb^{(c)} = (b_1,\ldots,b_k)^\mathrm{T}$ и равенство его нулю означает то, что предсказание равно константе и не зависит от значений иксов.
+Эту гипотезу можно проверить тремя способами:
 \begin{enumerate}
 \item Аналогично парной регрессии: критерий
 \[
-t=r_{M}^{2}(\hat{\bb}^{(c)},\mathbf{0};\SE(\hat{\bb}^{(c)}))\sim\chi^{2}(k)
+t=r_{M}^{2}\left(\hat{\bb}^{(c)},\mathbf{0};\cov(\hat{\bb}^{(c)})\right)\sim\chi^{2}(k)
 \]
  а именно,
 \[
-t=\left(\hat{\bb}^{(c)}\right)^{\T}\SE^{-1}(\hat{\bb}^{(c)})\hat{\bb}^{(c)}=\left(\hat{\bb}^{(c)}\right)^{\T}\left(\frac{\sigma^{2}}{n}\cdot\S_{\mathbf{x}\mathbf{x}}^{-1}\right)^{-1}\hat{\bb}^{(c)}=\frac{n\left(\hat{\bb}^{(c)}\right)^{\T}\S_{\mathbf{x}\mathbf{x}}\hat{\bb}^{(c)}}{\sigma^{2}}.
+t=\left(\hat{\bb}^{(c)}\right)^{\T}\left(\cov(\hat{\bb}^{(c)})\right)^{-1}\hat{\bb}^{(c)}=\left(\hat{\bb}^{(c)}\right)^{\T}\left(\frac{\sigma^{2}}{n}\cdot\S_{\mathbf{x}\mathbf{x}}^{-1}\right)^{-1}\hat{\bb}^{(c)}=\frac{n\left(\hat{\bb}^{(c)}\right)^{\T}\S_{\mathbf{x}\mathbf{x}}\hat{\bb}^{(c)}}{\sigma^{2}}.
 \]
 Неизвестный $\sigma^{2}$ следует оценить как
 \[
@@ -5807,38 +5780,86 @@ s^{2}=\frac{\SSE}{n-(k+1)};
 \frac{n\left(\hat{\bb}^{(c)}\right)^{\T}\S_{\mathbf{x}\mathbf{x}}\hat{\bb}^{(c)}/k}{s^{2}}\sim\mathrm{F}(k,n-(k+1)).
 \]
 
-\item Через ANOVA:
+\item Через ANOVA (разложение дисперсии):
+Разложение дисперсии
+\[
+\D\eta=\E(\eta-\E\eta)^{2}=\E(\hat{\eta}^*-\E\eta)^{2}+\E(\eta-\hat{\eta}^*)^{2},
+\]
+ где $\hat{\eta}^*$ --- наилучшее линейное приближение от $\xib$, на выборочном языке будет иметь вид
+\[
+\underbrace{\sum_{i=1}^{n}\left(y_{i}-\bar{y}\right)^{2}}_{\mathrm{SSTotal}}=
+\underbrace{\sum_{i=1}^{n}(\hat{y}_{i}-\bar{y})^{2}}_{\mathrm{SSRegr}}+
+\underbrace{\sum_{i=1}^{n}(y_{i}-\hat{y}_{i})^{2}}_{\mathrm{SSError}}.
+\]
+В случае, когда регрессоры не случайны (есть неслучайная матрица данных $\X$ и случайный отклик $\y$, как у нас сейчас),
+то же самое разложение имеет место.
+
+\begin{rem*}
+Иногда также пишут
+\[
+\mathrm{SSTotal}=\mathrm{SSEffect}+\mathrm{SSResidual},
+\]
+что ведет к неиллюзорной путанице!
+\end{rem*}
+Пусть $\eb\sim\N(\mathbf{0},\sigma^{2}\Ib)$. Тогда, с помощью теореме Cochran можно получить (без док-ва):
+\begin{comment}
+Почему?
+\end{comment}
+\[
+\frac{\SST}{\sigma^{2}}\sim\chi^{2}(n-1),\quad\frac{\SSR}{\sigma^{2}}\sim\chi^{2}(\underbrace{m-1}_{k}),\quad\frac{\SSE}{\sigma^{2}}\sim\chi^{2}(\underbrace{n-m}_{n-k-1})
+\]
+{} и $\SSE\indep\SSR.$ %
+\begin{comment}
+Поскольку $\widehat{\D\eta}=1/n\cdot\sum_{i=1}^{n}\left(\eta_{i}-\bar{\mathbf{y}}\right)$,
+можно было бы оценивать $\sigma^{2}$ как $\SSE/n$ --- но ведь $\hat{y}_{i}=\E(\eta\mid\xi)\neq\bar{\y}=\E\eta.$
+\end{comment}
+\begin{comment}
+Выборка не повторная, так что нельзя считать дисперсию?
+\end{comment}
+
+\begin{rem*}
+Утверждение про распределение $\SSE$ справедливо всегда при нормальном распределении
+ошибок; про $\SST$ и $\SSR$ это верно только если $\bb^{(c)}=\mathbf{0}$.
+Именно поэтому применяется $F$-критерий для проверки значимости регрессии.
+\end{rem*}
+
+Таким образом, в качестве статистики F-критерия можно взять, как и в дисперсионном анализе,
 \[
 t=\frac{\SSR/k}{\SSE/(n-(k+1))}\sim\mathrm{F}(k,n-(k+1))
 \]
 
+Критическая область, очевидно, справа, так как 'идеальное значение' --- 0.
 
 \begin{rem*}
-У этой статистики с предыдущей совпадает также и числитель, хотя это
-не оче-видно.
+У этой статистики с предыдущей совпадает также и числитель, хотя, чтобы в этом убедиться, надо провести некоторые выкладки, так это не очевидно.
 \end{rem*}
 \item Через коэффициент детерминации регрессии: известно выражение для множественного
 коэффициента корреляции:
 \[
-R^{2}(\eta,\xi_{1},\ldots,\xi_{k})=\frac{\E(\hat{\eta}^{*}-\E\eta)^{2}}{\D\eta},\quad\D\eta=\E(\eta-\E\eta)^{2}=\E(\hat{\eta}^{*}-\E\eta)^{2}+\E(\eta-\hat{\eta}^{*})^{2};
+R^{2}(\eta;\xi_{1},\ldots,\xi_{k})=\frac{\E(\hat{\eta}^{*}-\E\eta)^{2}}{\D\eta},\quad\D\eta=\E(\eta-\E\eta)^{2}=\E(\hat{\eta}^{*}-\E\eta)^{2}+\E(\eta-\hat{\eta}^{*})^{2};
 \]
 \begin{comment}
 однако в текущей постановке задачи $\eta$ не присутствует (?), поэтому
 \end{comment}
 {} на выборочном языке для множественной линейной регрессии получают
-\begin{eqnarray*}
-R^{2} & = & \frac{\SSR}{\SST}=\frac{\SST-\SSE}{\SST}=1-\frac{\SSE}{\SST}\\
-\mathrm{adjusted\,}R^{2} & = & 1-\frac{\SSE/(n-(k+1))}{\SST/(n-1)}\xrightarrow[n\to\infty]{}R^{2}.
-\end{eqnarray*}
+\begin{eqnarray}
+\label{eq:determ}
+R^{2} & = & \frac{\SSR}{\SST}=\frac{\SST-\SSE}{\SST}=1-\frac{\SSE}{\SST}.
+\end{eqnarray}
 
+Если матрица регрессоров $\X$ фиксирована (т.е. не является выборкой из распределения $\xib$),
+то $R^{2}$, вычисленный по той же формуле \eqref{eq:determ}, называется коэффициентом детерминации.
 
 \begin{rem*}
-При удалении даже незначимого признака $R^{2}$ уменьшится; $\mathrm{adjusted\,}R^{2}$
+При удалении даже незначимого признака $R^{2}$ уменьшится; однако $\mathrm{adjusted\,}R^{2}$
+\begin{eqnarray*}
+\mathrm{adjusted\,}R^{2} & = & 1-\frac{\SSE/(n-(k+1))}{\SST/(n-1)}\xrightarrow[n\to\infty]{}R^{2}
+\end{eqnarray*}
 не обязательно в силу поправки $n-(k+1),$ действующей как штраф за
 количество переменных.
 \end{rem*}
 
-Приводя к виду ANOVA-критерия, имеют
+Несложные манипуляции позволяют выписать статистику критерия ANOVA через коэффициент детерминации: 
 \[
 t=\frac{{\displaystyle \frac{\SSR}{k}}}{{\displaystyle \frac{\SSE}{n-(k+1)}}}=\frac{{\displaystyle \frac{\SSR}{k\,\SST}\SST}}{{\displaystyle \frac{{\displaystyle \frac{(\SST-\SSE+\SST)\SST}{\SST}}}{n-(k+1)}}}=\frac{R^{2}/k}{\left(1-R^{2}\right)/(n-(k+1))}.
 \]
@@ -6027,7 +6048,7 @@ $\mathrm{tolerance}=\min\mathrm{tolerance}_{i}$
 Пусть $\bb=(b_{0},\ldots,b_{k-r},\underbrace{b_{k-r+1},\ldots,b_{k}}_{r\text{ штук}})^{\T}$.
 Если $H_{0}:\bb_{k-r+1,k}=\mathbf{0}$ не отвергается, значит последние
 $r$ признаков не влияют на модель и следует выбрать более простую
-модель --- без этих коэффициентов. Можно использовать расстояние Махалонобиса
+модель --- без этих коэффициентов. Можно использовать расстояние Махаланобиса
 до 0 в метрике $\cov(\bb_{k-r+1,k})$:
 \begin{eqnarray*}
 t & = & r_{M}^{2}(\hat{\bb}_{k-r+1,k},\mathbf{0};\cov(\bb_{k-r+1,k}))\sim\chi^{2}(r)\\
@@ -6185,7 +6206,7 @@ r_{M}^{2}(\hat{\bb},\hat{\bb}^{(i)};\cov\hat{\bb})=(\hat{\bb}-\hat{\bb}^{(i)})^{
 \[
 \frac{(\hat{\bb}-\hat{\bb}^{(i)})\X^{\T}\X(\hat{\bb}-\hat{\bb}^{(i)})/m}{\hat{\sigma}^{2}}.
 \]
- Можно сравнить с расстоянием Махалонобиса в пространстве независимых
+ Можно сравнить с расстоянием Махаланобиса в пространстве независимых
 признаков: если $x_{i}$ --- $i$-й индивид, $\bar{\mathbf{x}}$ ---
 вектор средних, то аутлаером можно назвать индивида, для которого
 велико
@@ -6194,7 +6215,7 @@ r_{M}^{2}(x_{i},\bar{\mathbf{x}};\S_{\mathbf{x}\mathbf{x}}).
 \]
 
 \begin{rem*}
-Если индивид не аутлаер по Куку, но аутлаер по Махалонобису, то велика
+Если индивид не аутлаер по Куку, но аутлаер по Махаланобису, то велика
 дисперсия и $\S_{\mathbf{x}\mathbf{x}}$ оценивается неправильно.
 \end{rem*}
 \begin{center}
@@ -6202,9 +6223,9 @@ r_{M}^{2}(x_{i},\bar{\mathbf{x}};\S_{\mathbf{x}\mathbf{x}}).
 \toprule
  & Аутлаер по Куку & Не аутлаер по Куку\tabularnewline
 \midrule
-Аутлаер по Махалонобису & Далеко от линии регрессии & Далеко от $\bar{\mathbf{x}}$ на линии регрессии\tabularnewline
+Аутлаер по Махаланобису & Далеко от линии регрессии & Далеко от $\bar{\mathbf{x}}$ на линии регрессии\tabularnewline
 \midrule
-Не аутлаер по Махалонобису & Близко к $\bar{\mathbf{x}}$ по одной координате и далеко по другой & Близко к $\bar{\mathbf{x}}$\tabularnewline
+Не аутлаер по Махаланобису & Близко к $\bar{\mathbf{x}}$ по одной координате и далеко по другой & Близко к $\bar{\mathbf{x}}$\tabularnewline
 \bottomrule
 \end{tabular}
 \par\end{center}
