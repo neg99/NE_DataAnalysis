@@ -4882,18 +4882,18 @@ FIXME: это делает критерий множественных срав�
 \begin{center}
 \begin{tabular}{ccc}
 \toprule
- & Retain $H_{0}$ (критерий не значим) & Reject $H_{0}$ (критерий значим)\tabularnewline
+ & Retain $H_{0}$ (отличие от $H_{0}$ не значимо) & Reject $H_{0}$ (отличие от $H_{0}$ значимо)\tabularnewline
 \midrule
-True $H_{0}$ & \# True Negative & \# False Discovery\tabularnewline
+True $H_{0}$ & \# True Negative & \# False Positive (False Discovery)\tabularnewline
 \midrule
-False $H_{0}$ & \# False Negative & \# True Discovery\tabularnewline
+False $H_{0}$ & \# False Negative & \# True Positive (True Discovery)\tabularnewline
 \bottomrule
 \end{tabular}
 \par\end{center}
 
 Используя обозначения таблички,
 \[
-\a_{\I}\approx\frac{\mathrm{FD}}{\mathrm{TN+FD}},\qquad\a_{\II}\approx\frac{\mathrm{FN}}{\mathrm{FN+TD}}.
+\a_{\I}\approx\frac{\mathrm{FP}}{\mathrm{TN+FP}},\qquad\a_{\II}\approx\frac{\mathrm{FN}}{\mathrm{FN+TP}}.
 \]
 
 \begin{defn*}
