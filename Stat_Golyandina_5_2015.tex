@@ -4977,6 +4977,23 @@ FixME: почему?
 
 \end{defn*}
 
+\subsection{Независимые гипотезы}
+
+Если все гипотезы и критерии независимы, то возможно точно посчитать
+$\FWER$:
+\begin{eqnarray*}
+\FWER_{\left\{ 1,\ldots,m\right\} } & = & \P\left(\bigvee_{i=1}^{m}H_{0}^{(i)}\text{ отв}\right)=1-\P\left(\bigwedge_{i=1}^{m}H_{0}^{(i)}\text{ не отв}\right)\\
+ & = & 1-(1-\a_{1})^{m}=\a.
+\end{eqnarray*}
+Это позволяет ввести поправку на множественные тесты, делающая критерий точным:
+\begin{defn*}
+\emph{Поправка Šidák}:
+\[
+\a_{1}=1-\sqrt[m]{1-\a}.
+\]
+
+\end{defn*}
+
 \section{Stepdown (Holm's algorithm)}
 
 Для увеличения мощности применяется <<Holm's algorithm>>:
@@ -5026,22 +5043,7 @@ $$
 То есть $\FWER(I) \leqslant \alpha$ для любого $I$, откуда следует, что $\FWER = \FWER(\{1, \ldots, m \}) \leqslant \alpha$.
 \end{proof}
 
-\subsection{Частный случай}
 
-Если все гипотезы и критерии независимы, то возможно точно посчитать
-$\FWER$:
-\begin{eqnarray*}
-\FWER_{\left\{ 1,\ldots,m\right\} } & = & \P\left(\bigvee_{i=1}^{m}H_{0}^{(i)}\text{ отв}\right)=1-\P\left(\bigwedge_{i=1}^{m}H_{0}^{(i)}\text{ не отв}\right)\\
- & = & 1-(1-\a_{1})^{m}=\a\implies\a_{1}=1-\sqrt[m]{1-\a}
-\end{eqnarray*}
-
-\begin{defn*}
-\emph{Поправка Šidák}:
-\[
-\a_{1}=1-\sqrt[m]{1-\a}.
-\]
-
-\end{defn*}
 
 \chapter{ANOVA Post-Hoc Comparison}
 
