@@ -5008,7 +5008,7 @@ p_{(j)}>\frac{\a}{m-j+1}
  \end{enumerate}
 
 \begin{prop*}
-$\FWER\leq\a$.\end{prop*}
+$\strong \, \FWER\leq\a$.\end{prop*}
 \begin{proof}
 Пусть $I$ --- индексы (введенные в алгоритме) верных гипотез и 
 $$
@@ -5026,21 +5026,22 @@ $$
 $$
 \frac{1}{m - j +1} \leqslant \frac{1}{\left| I \right|}.
 $$
-По построению алгоритма из того, что $H_{(i)}$ отвергается, следует, что $H_{(i-1)}$ также отвергается. Поэтому событие << отвергнута гипотеза $H_{(i)}$>> включает в себя событие <<гипотезы $H_{(1)}, \ldots H_{(i)}$ отвергнуты>>. Из этого и из определения $j$ следует, что
+По построению алгоритма из того, что $H_{(i)}$ отвергается, следует, что $H_{(i-1)}$ также отвергается. Поэтому событие <<отвергнута гипотеза $H_{(i)}$>> включает в себя событие <<гипотезы $H_{(1)}, \ldots H_{(i)}$ отвергнуты>>. Из этого и из определения $j$ следует, что
 \begin{align*}
-	\FWER(I) = \P\left(\exists i \in I : H_{(i)} \text{ отвергается} \right) 
+	\weak \, \FWER(I) = \P\left(\exists i \in I : H_{(i)} \text{ отвергается} \right) 
 	= P\left(H_{(j)} \text{ отвергается}\right).
 \end{align*}
 По полученному ранее неравенству
 \begin{align*}
-	\FWER(I) &=
-	P\left(H_{(j)} \text{ отвергается}\right) \\
-	&= P\left(p_{(j)} < \frac{\alpha}{m - j +1}\right) \\ 
-	&\leqslant P\left(p_{(j)} < \frac{\alpha}{\left| I \right| } \right) \\
+	\weak \, \FWER(I) &=
+	P\left(H_{(j)} \text{ отвергается}\right) 
+	= P\left(p_{(j)} < \frac{\alpha}{m - j +1}\right) \\ 
+	&\leqslant P\left(p_{(j)} < \frac{\alpha}{\left| I \right| } \right) 
+	\leqslant P\left(\bigcup\limits_{i \in I} \left( p_{(i)} < \frac{\alpha}{\left| I \right|} \right)\right) \\
 	&\leqslant \sum\limits_{i \in I} P\left(p_{(i)} < \frac{\alpha}{\left| I \right| } \right) 
 	= \left| I \right| \frac{\alpha}{\left| I \right| } = \alpha.
 \end{align*}
-То есть $\FWER(I) \leqslant \alpha$ для любого $I$, откуда следует, что $\FWER = \FWER(\{1, \ldots, m \}) \leqslant \alpha$.
+То есть $\weak \, \FWER(I) \leqslant \alpha$ для любого $I$, откуда следует, что $\strong \, \FWER \leqslant \alpha$.
 \end{proof}
 
 
