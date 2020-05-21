@@ -5763,24 +5763,23 @@ $\A<\B\iff\A-\B$ отрицательно определена, т.е.
 тогда $a_{ii}<b_{ii}$.\end{rem*}
 \begin{thm*}[Гаусс-Марков]
 В условиях $\E\epsilon_{i}=0,\ \D\epsilon_{i}=\sigma^{2},\ \epsilon_{i}\indep\epsilon_{j}$,
-$\hat{\bb}_{\OLS}$ является <<BLUE>>: <<best linear unbiased estimate>>.\end{thm*}
-\begin{cor*}
+$\hat{\bb}_{\OLS}$ является <<BLUE>>: <<best linear unbiased estimate>>. То есть $\hat{\bb}_{\OLS}$ обладает наименьшей ковариационной матрицей среди всех линейных несмещенных оценок.\end{thm*}
+\begin{thm*}
 Если $\eb\sim\N(\mathbf{0},\sigma^{2}\Ib)$, то
 \[
 \hat{\bb}_{\OLS}=\hat{\bb}_{\MLE}.
 \]
-\end{cor*}
+\end{thm*}
 \begin{proof}
-MLE оценка есть
+Так как $\y \sim \N(\X \bb, \sigma^2 \Ib$), то
 \begin{eqnarray*}
-\P(\y\mid\boldsymbol{\mu},\boldsymbol{\Sigma}=\sigma^{2}\Ib) & = & \frac{1}{(2\pi)^{n/2}\sqrt{\det\sigma^{2}\Ib}}\exp\left\{ -\frac{1}{2}\left(\mathbf{y}-\mb\right)\sigma^{-2}\Ib(\y-\mb)^{\T}\right\} \\
- & = & \frac{1}{(2\pi)^{n/2}\sigma^{n}}\exp\left\{ -\frac{1}{2\sigma^{2}}\left\Vert \X\mathbf{b}-\mb\right\Vert ^{2}\right\} \xrightarrow[\mathbf{b}]{}\max
+\hat{\bb}_{\MLE} = \argmax\limits_{\bb}\P(\y\mid\bb) 
+	& = & \argmax\limits_{\bb} \frac{1}{(2\pi)^{n/2}\sqrt{\det\sigma^{2}\Ib}}\exp\left\{ -\frac{1}{2}\left(\mathbf{y}-\X \bb\right)\sigma^{-2}\Ib(\y-\X \bb)^{\T}\right\} \\
+    & = & \argmax\limits_{\bb} \exp\left\{ -\frac{1}{2 \sigma^2}\left(\mathbf{y}-\mb\right)(\y-\mb)^{\T}\right\} \\
+    & = & \argmax\limits_{\bb} \exp\left\{ -\frac{1}{2\sigma^2} \left\Vert \X \bb - \y \right\Vert^2 \right\} \\
+    & = & \argmin\limits_{\bb} \left\Vert \X \bb - \y \right\Vert^2  = \hat{\bb}_{\OLS}
 \end{eqnarray*}
-что аналогично,
-\[
-\left\Vert \X\mathbf{b}-\mb\right\Vert ^{2}\xrightarrow[\mathbf{b}]{}\min.
-\]
- Это же есть постановка задачи OLS.
+
 \end{proof}
 
 \section{Разложение суммы квадратов и оценка $\sigma^{2}$}
