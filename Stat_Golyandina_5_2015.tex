@@ -4899,7 +4899,7 @@ False $H_{0}$ & \# False Negative & \# True Positive (True Discovery)\tabularnew
 \begin{defn*}
 Family-wise error rate (FWER):
 \[
-\mathrm{FWER}=\P(\text{хотя бы один раз отвергнута верная гипотеза})=\P\left(\bigvee_{i=1}^{m}H_{0}^{(i)}\text{ отв}\right).
+\FWER=\P \left(\text{отвергнута хотя бы одна верная гипотеза}\right).
 \]
  Иными словами, $\FWER$ --- это ошибка первого рода для всей совокупности
 экспериментов.
@@ -4910,56 +4910,41 @@ Family-wise error rate (FWER):
 если \emph{все} $H_{0}^{(i)},\ i\in1:m$ верны. В \emph{сильном} смысле
 контроль $\FWER$ на уровне $\a$ гарантируется для \emph{любой} конфигурации
 верных и не верных $H_{0}^{(j)}$.
-\begin{defn*}
-Пусть $T_{0}:=\left\{ i:H^{(i)}\text{ верна}\right\} .$ Тогда
-\[
-\weak\,\FWER_{T}=\P(\text{хотя бы один раз отвергнута верная гипотеза, если верны }H^{(i)},\ i\in T)
-\]
- т.е. если $T_{0}=T$.
-\end{defn*}
-
-\begin{defn*}
-\[
-\strong\,\FWER=\max_{T:T\subset\left\{ 1,\ldots,m\right\} }\weak\,\FWER_{T}.
-\]
-\end{defn*}
-\begin{notation*}
-$\FWER_{T}:=\weak\,\FWER_{T}.$
-\end{notation*}
 Это осуществляется двумя процедурами:
 \begin{itemize}
 \item Single
 \item Stepdown
 \end{itemize}
 
+Пусть $\FWER(I) = \P\left(\bigcup_{i \in I} H_{(i)} \text{отвергнута} \right)$ --- FWER, если верны гипотезы с индексами $I$.
+\begin{defn*}
+\[
+\weak\,\FWER = \FWER\left( \left\{ 1, \ldots, m \right\} \right)
+\]
+\end{defn*}
+
+\begin{defn*}
+\[
+\strong\,\FWER=\max_{I \subset 1, \dots, m }\FWER(I).
+\]
+\end{defn*}
+
+
 \section{Single}
 
-Каждая $H^{(i)}$ проверяется отдельно с уровнем значимости $\a_{1}$.
-Задача сводится к тому, чтобы найти такое $\a_{1}$, что $\FWER\leq\a$
-для какого-то нужного предзаданного $\a$. Пусть $T=1:m$, т.е. будто
-все тесты верны; тогда
+Каждая $H_{(i)}$ проверяется отдельно с уровнем значимости $\a_{1}$.
+Задача сводится к тому, чтобы найти такое $\a_{1}$, что $\strong \, \FWER\leq\a$
+для какого-то нужного предзаданного $\a$. Так как
 \[
-\FWER_{\left\{ 1,\ldots,m\right\} }=\P\left(\bigvee_{i=1}^{m}H_{0}^{(i)}\text{ отв}\right)\leq\sum_{i=1}^{m}\P(H^{(i)}\text{ отв})=m\a_{1}=\a\implies\a_{1}:=\frac{\a}{m}.
+\FWER(I)=\P\left(\bigcup_{i \in I}H_{(i)}\text{ отверграется}\right)
+\leq \sum_{i\in I}\P(H_{(i)}\text{ отвергается})=\left| I \right|\a_{1} \leqslant m \alpha_1 =\a,
 \]
-
+для любого $I$, то и $\strong \, \FWER \leqslant m \alpha_1$ 
 \begin{rem*}
-Из-за неравенства тест консервативный, т.е. $\FWER\ll\a$. Значит
+Из-за неравенства тест консервативный, т.е. $\strong \, \FWER\ll\a$. Значит
 не максимально мощный.
 \end{rem*}
-\begin{comment}
-FixME: почему?
-\end{comment}
-\begin{eqnarray*}
-\strong\,\FWER & = & \max_{T\subset\left\{ 1,\ldots,m\right\} }\P(H^{(i)}\text{ отвергается},\ i\not\in T)\\
- & \leq & \sum_{i\not\in T}\P(H^{(i)}\text{ отвергается})=\left|\left\{ i:i\not\in T\right\} \right|\a_{1}=\a.
-\end{eqnarray*}
 
-\begin{cor*}
-$\FWER$ всегда хуже $\strong\,\FWER.$%
-\begin{comment}
-FixME: почему?
-\end{comment}
-\end{cor*}
 \begin{defn*}
 Поправка Бонферрони
 \[
@@ -4967,25 +4952,17 @@ FixME: почему?
 \]
 
 \end{defn*}
-Тест нужно проверять не с $\a_{1}$, а с $\a/m$. Так критерий будет
-консервативным (иначе --- радикальным, что хуже).
-\begin{defn*}
-Поправка Бонферрони для $\pv$:
-\[
-\pv<\frac{\a}{m}\implies\text{отвергаем}\iff mp<\a\implies\text{отвергаем}.
-\]
-
-\end{defn*}
+То есть каждую гипотезу нужно проверять с $\a_{1}$.
 
 \subsection{Независимые гипотезы}
 
-Если все гипотезы и критерии независимы, то возможно точно посчитать
-$\FWER$:
+Если все критерии независимы, то возможно точно посчитать
+$\weak \, \FWER$:
 \begin{eqnarray*}
-\FWER_{\left\{ 1,\ldots,m\right\} } & = & \P\left(\bigvee_{i=1}^{m}H_{0}^{(i)}\text{ отв}\right)=1-\P\left(\bigwedge_{i=1}^{m}H_{0}^{(i)}\text{ не отв}\right)\\
+\weak \, \FWER & = & \P\left(\bigcup_{i=1}^{m}H_{0}^{(i)}\text{ отв}\right)=1-\P\left(\bigcap_{i=1}^{m}H_{0}^{(i)}\text{ не отв}\right)\\
  & = & 1-(1-\a_{1})^{m}=\a.
 \end{eqnarray*}
-Это позволяет ввести поправку на множественные тесты, делающая критерий точным:
+Это позволяет ввести поправку, обеспечивающую $\weak \, \FWER = \alpha$
 \begin{defn*}
 \emph{Поправка Šidák}:
 \[
@@ -5028,12 +5005,12 @@ $$
 $$
 По построению алгоритма из того, что $H_{(i)}$ отвергается, следует, что $H_{(i-1)}$ также отвергается. Поэтому событие <<отвергнута гипотеза $H_{(i)}$>> включает в себя событие <<гипотезы $H_{(1)}, \ldots H_{(i)}$ отвергнуты>>. Из этого и из определения $j$ следует, что
 \begin{align*}
-	\weak \, \FWER(I) = \P\left(\exists i \in I : H_{(i)} \text{ отвергается} \right) 
+	\FWER(I) = \P\left(\exists i \in I : H_{(i)} \text{ отвергается} \right) 
 	= P\left(H_{(j)} \text{ отвергается}\right).
 \end{align*}
 По полученному ранее неравенству
 \begin{align*}
-	\weak \, \FWER(I) &=
+	\FWER(I) &=
 	P\left(H_{(j)} \text{ отвергается}\right) 
 	= P\left(p_{(j)} < \frac{\alpha}{m - j +1}\right) \\ 
 	&\leqslant P\left(p_{(j)} < \frac{\alpha}{\left| I \right| } \right) 
@@ -5041,7 +5018,7 @@ $$
 	&\leqslant \sum\limits_{i \in I} P\left(p_{(i)} < \frac{\alpha}{\left| I \right| } \right) 
 	= \left| I \right| \frac{\alpha}{\left| I \right| } = \alpha.
 \end{align*}
-То есть $\weak \, \FWER(I) \leqslant \alpha$ для любого $I$, откуда следует, что $\strong \, \FWER \leqslant \alpha$.
+То есть $\FWER(I) \leqslant \alpha$ для любого $I$, откуда следует, что $\strong \, \FWER \leqslant \alpha$.
 \end{proof}
 
 
