@@ -4983,41 +4983,47 @@ FixME: почему?
 \begin{enumerate}
 \item считаются все $\pv$ $p_{1},\ldots,p_{m}$,
 \item упорядочиваются: $p_{(1)}\leq\ldots\leq p_{(m)}.$
-\item если $mp_{(1)}<\a$ то гипотеза отвергается, иначе и все последующие
-не отвергаются
-\item в общем, если
+\item пусть $j$ --- минимальный индекс, такой, что
 \[
-p_{(j)}<\frac{\a}{m-j+1}
+p_{(j)}>\frac{\a}{m-j+1}
 \]
- то гипотеза отвергается, иначе и все последующие не отвергаются.\end{enumerate}
-\begin{rem*}
-Сей тест более мощный, потому что не всегда происходит умножение на
-$m$.
-\end{rem*}
+ тогда $H_{(1)}, \ldots, H_{(j-1)}$ отвергаются, а $H_{(j)}, \ldots, H_{(m)}$ не отвергаются.
+ \end{enumerate}
 
-\begin{rem*}
-Процедуру сложно повторить, потому что при упорядочивании гипотезы
-могут перемешиваться.\end{rem*}
 \begin{prop*}
 $\FWER\leq\a$.\end{prop*}
 \begin{proof}
-Упорядочим $\pv$: $p_{(1)}\leq\dots\leq p_{(j)}\leq\ldots\leq p_{(m)}.$
-Пусть $I=\left\{ i:H_{0}^{(i)}\text{ верна}\right\} $, $m_{0}=\left|I\right|$
---- количество верных гипотез, $j=\min_{k\in I}$. $m_{0}$ должно
-<<поместиться до конца>>:
-\[
-j\leq m-m_{0}+1\implies\frac{\a}{m-j+1}\leq\frac{\a}{m_{0}}.
-\]
- Значит %
-\begin{comment}
-FIXME: почему?
-\end{comment}
-{}
-\begin{eqnarray*}
-\FWER_{I} & \leq & \P\left(p_{(j)}<\frac{\a}{m-j+1}\right)\leq\P\left(p_{(j)}<\frac{\a}{m_{0}}\right)\leq\P\left(\min_{i\in I}p_{i}<\frac{\a}{m_{0}}\right)\\
- & = & \P\left(\bigvee_{i\in I}p_{i}<\frac{\a}{m_{0}}\right)\leq\sum_{i\in I}\P\left(p_{i}<\frac{\a}{m_{0}}\right)=m_{0}\frac{\a}{m_{0}}=\a
-\end{eqnarray*}
+Пусть $I$ --- индексы (введенные в алгоритме) верных гипотез и 
+$$
+j = \min\limits_i \left\{i : i \in I, \, H_{(i)} \text{ отвергается}\right\}.
+$$
 
+Так как $j$ --- номер наименьшей неправильно отвергнутой гипотезы, то гипотезы $H_{(1)}, \ldots, H_{(j-1)}$ неверны (они правильно отвергнуты по определению $j$), а все верные гипотезы находятся среди $H_{(j)}, \ldots, H_{(m)}$, то есть
+$$
+\left| \left\{H_{(j)}, \ldots, H_{(m)} \right\}\right| \geqslant \left| I \right|,
+$$
+что можно записать как
+$$
+m - j +1 \geqslant \left| I \right|,
+$$
+$$
+\frac{1}{m - j +1} \leqslant \frac{1}{\left| I \right|}.
+$$
+По построению алгоритма из того, что $H_{(i)}$ отвергается, следует, что $H_{(i-1)}$ также отвергается. Поэтому событие << отвергнута гипотеза $H_{(i)}$>> включает в себя событие <<гипотезы $H_{(1)}, \ldots H_{(i)}$ отвергнуты>>. Из этого и из определения $j$ следует, что
+\begin{align*}
+	\FWER(I) = \P\left(\exists i \in I : H_{(i)} \text{ отвергается} \right) 
+	= P\left(H_{(j)} \text{ отвергается}\right).
+\end{align*}
+По полученному ранее неравенству
+\begin{align*}
+	\FWER(I) &=
+	P\left(H_{(j)} \text{ отвергается}\right) \\
+	&= P\left(p_{(j)} < \frac{\alpha}{m - j +1}\right) \\ 
+	&\leqslant P\left(p_{(j)} < \frac{\alpha}{\left| I \right| } \right) \\
+	&\leqslant \sum\limits_{i \in I} P\left(p_{(i)} < \frac{\alpha}{\left| I \right| } \right) 
+	= \left| I \right| \frac{\alpha}{\left| I \right| } = \alpha.
+\end{align*}
+То есть $\FWER(I) \leqslant \alpha$ для любого $I$, откуда следует, что $\FWER = \FWER(\{1, \ldots, m \}) \leqslant \alpha$.
 \end{proof}
 
 \subsection{Частный случай}
