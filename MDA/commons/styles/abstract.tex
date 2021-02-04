@@ -1,0 +1,19 @@
+\ifxetex
+\defaultfontfeatures{Ligatures={TeX},Renderer=Basic}
+\usepackage{libertine}
+\setmainfont[
+  Ligatures=TeX,
+  Extension         = .otf,
+  BoldFont          = LinLibertine_RZ,
+  ItalicFont        = LinLibertine_RI,
+  BoldItalicFont    = LinLibertine_RZI,
+]{LinLibertine_R}
+\setdefaultlanguage{russian}  %% устанавливает главный язык документа
+\setotherlanguage{english}
+\setmathfont{xits-math.otf}
+\setmathfont[range={\mathcal,\mathbfcal},StylisticSet=1]{xits-math.otf}
+\else
+\fi
+
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\parindent=1cm

@@ -1,0 +1,38 @@
+\usepackage{cite}
+%\usepackage{xltxtra}
+%%% Математические пакеты %%%
+
+\usepackage{ifxetex}
+\ifxetex
+    % XeLaTeX
+ \usepackage{mathtools}
+ \usepackage[bold-style=TeX]{unicode-math}
+ \usepackage{xltxtra}
+  %%% Кодировки и шрифты %%%
+  \usepackage{polyglossia}                          % Поддержка многоязычности
+  \usepackage{fontspec}
+  \usepackage{xunicode}
+\else
+    % default: pdfLaTeX
+    \usepackage[intlimits]{amsmath}
+    \usepackage{amsfonts, amssymb,amscd}
+   \usepackage[utf8x]{inputenc}
+   \usepackage[english, russian]{babel}
+   \usepackage[OT1]{fontenc}
+   \usepackage{graphicx}
+\fi
+
+\usepackage{amsthm}  % Математические дополнения от AMS
+\usepackage{etoolbox}
+
+
+%%% Общее форматирование
+\usepackage[singlelinecheck=off,center]{caption}    % Многострочные подписи
+\usepackage{soul}                                   % Поддержка переносоустойчивых подчёркиваний и зачёркиваний
+\usepackage{icomma}                                 % Запятая в десятичных дробях
+%%% Оформление абзацев %%%
+\usepackage{indentfirst}     
+\usepackage{xcolor}
+\usepackage[nodayofweek]{datetime}
+\usepackage{hyperref}
+

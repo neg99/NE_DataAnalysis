@@ -1,0 +1,35 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{bm}
+\usepackage{longtable}
+\def\toP{\xrightarrow{\P}}
+\def\tod{\xrightarrow{\mathrm{d}}}
+
+\include{commons/packages/abstract}        % Подключаемые пакеты
+\include{commons/styles/abstract}          % Пользовательские стили
+\include{commons/commands/commands}
+
+\newcommand{\Header}{
+  \begin{center}
+    {\Large\bf
+     Лекции по классификации и кластерному анализу
+      }\\
+      (черновой вариант для статмода 2019/2021 уч.года, Голяндина Н.Э.)
+      
+    \vspace{0.7em}
+    {Собрано {\today} в {\currenttime}}
+  \end{center}
+
+  \vspace{1em}
+  %\tableofcontents
+  \pagebreak
+}
+
+
+\begin{document}
+\Header
+      \input{classification}
+      \input{cluster}
+     \section{Кластерный анализ}
+     \input{cluster}
+     \end{document}
+\end{document}
