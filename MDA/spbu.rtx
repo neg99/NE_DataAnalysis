@@ -1,0 +1,98 @@
+\ProvidesFile{spbu.rtx}
+
+\newcommand\specialist@the{\default@the}
+\specialist@the
+
+\def\diplomafield#1{%
+  \csname #1label\endcsname:\\%
+  \csname @#1status\endcsname\ \csname @#1\endcsname
+}
+\renewcommand{\cdsep}{\\}
+
+\if@titlepage\renewcommand\maketitle[1][]{
+\ifthenelse{\equal{#1}{en}}{\@titlepage@entrue}{\@titlepage@enfalse}
+\if@titlepage@en
+  \def\appos{Head of Department}
+  \def\approved{Admitted for defence}
+  \def\revname{Reviewer}
+  \def\revsndname{\revname}
+  \def\revlabel{\revname}
+  \def\revsndlabel{\revsndname}
+  \def\saname{Scientific Supervisor}
+  \def\sasndname{\saname}
+  \def\salabel{\saname}
+  \def\sasndlabel{\saname}
+\else
+  \def\appos{\CYRZ\cyra\cyrv\cyre\cyrd\cyru\cyryu\cyrshch\cyri\cyrishrt\ %
+    \cyrk\cyra\cyrf\cyre\cyrd\cyrr\cyro\cyrishrt}
+  \def\approved{\CYRD\cyro\cyrp\cyru\cyrshch\cyre\cyrn\cyra\ %
+    \cyrk\ \cyrz\cyra\cyrshch\cyri\cyrt\cyre}
+\fi
+
+\ifundeflength\firstskip{1.5cm}
+\ifundeflength\secondskip{3.5cm}
+\ifundeflength\thirdskip{3ex}
+\ifundeflength\fourthskip{2ex}
+\ifundeflength\fifthskip{4ex}
+\ifundeflength\sixthskip{2.5cm}
+\ifundeflength\seventhskip{1ex}
+
+\setlength\fieldhshift{8.5cm}
+
+\def\titlefont{\Large\bfseries}
+\def\topiclabelfont{\large}
+\def\topicfont{\large\bfseries}
+
+\def\workname{\CYRR\cyra\cyrb\cyro\cyrt\cyra}
+
+\thispagestyle{empty}
+\enlargethispage{2cm}
+\vspace*{-2cm}
+\begin{center}
+  {\instfont\@institution}
+\end{center}
+
+\vskip\firstskip
+\vskip\secondskip
+\begin{center}
+  \vskip\thirdskip
+  {\@author}
+  \vskip\fourthskip
+  {\topicfont\@topic}
+  \vskip\fifthskip
+  {\@title}
+\end{center}
+\normalfont
+\vskip\sixthskip
+\hfill
+\begin{minipage}{.5\linewidth}
+    \begin{flushright}
+    \ifx\@apname\empty\else
+    \vskip\seventhskip
+    \approved\\%
+    \appos:\\%
+    \@apname
+    \fi  
+    \ifx\@sa\empty\else
+    \vskip\seventhskip\diplomafield{sa}
+    \fi
+    \ifx\@sasnd\empty\else
+    \vskip\seventhskip\diplomafield{sasnd}
+    \fi
+    \ifx\@rev\empty\else
+    \vskip\seventhskip\diplomafield{rev}
+    \fi
+    \ifx\@revsnd\empty\else
+    \vskip\seventhskip\diplomafield{revsnd}
+    \fi
+    \end{flushright}
+\end{minipage}
+\vfill
+\begin{center}
+  {\@city\cdsep\@date}
+\end{center}
+\normalfont\clearpage
+}\fi
+\endinput
+%%
+%% End of file `specialist.rtx'.
