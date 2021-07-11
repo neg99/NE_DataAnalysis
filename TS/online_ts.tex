@@ -1,0 +1,98 @@
+\documentclass[specialist,
+substylefile = spbu.rtx,
+subf,href,colorlinks=true, 12pt]{disser}
+
+\usepackage[a4paper,
+mag=1000, includefoot,
+left=3cm, right=1.5cm, top=2cm, bottom=2cm, headsep=1cm, footskip=1cm]{geometry}
+\usepackage[T2A]{fontenc}
+\usepackage[cp1251]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+
+\ifpdf\usepackage{epstopdf}\fi
+\let\vec=\mathbf
+\widowpenalty=10000
+\clubpenalty=10000
+% Включать подсекции в оглавление
+\setcounter{tocdepth}{2}
+
+\graphicspath{{fig1/}}
+
+\newtheorem{statement}{Утверждение}
+\newtheorem{theorem}{Теорема}
+\newtheorem{remark}{Замечание}
+\newtheorem{definition}{Определение}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\include{commands}
+
+%%
+%% Титульный лист на русском языке
+%%
+%
+%% Название организации
+%\institution{%
+%	Санкт-Петербургский государственный университет \\
+%	Прикладная математика и информатика \\
+%	Статистическое моделирование
+%}
+%
+%\title{Неповеренный конспект лекций/практики Голяндиной Н.Э.}
+%
+%% Тема
+%\topic{\normalfont\scshape %
+%  Статистический анализ временных рядов}
+%
+%% Автор
+%\author{Первоначально набрано Понизовой В. и Федоровым Н.}
+
+
+% Город и год
+%\city{Санкт-Петербург}
+%\date{\number\year}
+%\maketitle
+{\large Материалы для лекций по временным рядам (Голяндина Н.Э.)}
+
+\tableofcontents
+
+\chapter{Введение}
+\input{online_ts1}
+\input{online_ts2}
+\input{online_ts3}
+
+
+%\chapter{Linear filters}
+%\end{document}
+%\include{ch1/ch1-sect05-pgsmooth}
+%\include{ch1/ch1-sect06-trextsmooth}
+%\include{ch1/ch1-sect07-linfilter}
+%\include{ch1/ch1-sect08-filtcharcos}
+%\include{ch1/ch1-sect09-acfrollmean}
+%\include{ch1/ch1-sect10-acfdiff}
+%%\end{document}
+%\include{ch1/ch1-sect14-pgfilt}
+%\include{ch1/ch1-sect11-tsdelay}
+%\include{ch1/ch1-sect13-denoiseflt}
+%\include{ch1/ch1-sect12-tsoffset}
+%\include{ch1/ch1-sect15-multaddmodel}
+%\include{ch1/ch1-sect16-varstabilizing}
+%\include{ch1/ch1-sect17-trextseason}
+%\include{ch1/ch1-sect18-fltdiff}
+%\include{ch1/ch1-sect19-rollmeanmed}
+%%\include{ch1/ch1-sect20-frqleakage}
+%\include{ch1/ch1-sect21-trregr}
+%\include{ch1/ch1-sect22-trloess}
+%\include{ch1/ch1-sect23-trenvelope}
+%\include{ch1/ch1-sect24-trvar}
+%\include{ch1/ch1-sect25-decompose}
+%\include{ch1/ch1-sect26-stl}
+
+\end{document}
+
