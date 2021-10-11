@@ -191,22 +191,22 @@ $$\mathbb{X} = \begin{pmatrix}
 \end{enumerate}
 
 \section{Многомерное нормальное распределение}\label{q1}
-Рассмотрим $\xi \sim \mathrm{N}_p(\mu, \Sigma)$, где $\mu = \mathrm{E} \xi$ --- среднее значение $\xi$, $\Sigma = \mathrm{Cov} \xi$ --- ковариационная матрица. Предположим, что $\Sigma$ --- невырожденная матрица.\footnote{$|\Sigma| \neq 0$.} \textit{Плотность многомерного нормального распределения} задаётся формулой:
+Рассмотрим $\xi \sim \mathrm{N}_p(\bm\mu,\bm\Sigma)$, где $\bm\mu = \mathrm{E} \xi$ --- среднее значение $\xi$, $\bm\Sigma = \mathrm{Cov} \xi$ --- ковариационная матрица. Предположим, что $\bm\Sigma$ --- невырожденная матрица.\footnote{$|\bm\Sigma| \neq 0$.} \textit{Плотность многомерного нормального распределения} задаётся формулой:
 \begin{gather*}
-\mathrm{p}(\mathbf{x}, \mu, \Sigma) = \frac{1}{(2\pi)^{p/2} |\Sigma|^{1/2}} \exp \{-\frac{1}{2} (\mathbf{x} - \mu)^{\mathrm{T}}\Sigma^{-1}(\mathbf{x} - \mu)\} \text{ для } \forall \mathbf{x}  \in\mathbb{R}^{p}, \text{ где}
+\mathrm{p}(\mathbf{x}, \bm\mu, \bm\Sigma) = \frac{1}{(2\pi)^{p/2} |\bm\Sigma|^{1/2}} \exp \{-\frac{1}{2} (\mathbf{x} - \bm\mu)^{\mathrm{T}}\bm\Sigma^{-1}(\mathbf{x} - \bm\mu)\} \text{ для } \forall \mathbf{x}  \in\mathbb{R}^{p}, \text{ где}
 \end{gather*}
 $p$ --- количество признаков. Очевидно, что в одномерном случае плотность будет иметь следующий вид:
 \begin{gather*}
-p(x) = \frac{1}{\sqrt{2 \pi} \sigma} \exp \{-\frac{(x - \mu)^2}{2\sigma^2}\}, \text{ где}
+p(x) = \frac{1}{\sqrt{2 \pi} \sigma} \exp \{-\frac{(x - \bm\mu)^2}{2\sigma^2}\}, \text{ где}
 \end{gather*}
-$\mu$, $\sigma$ --- числа.
+$\bm\mu$, $\sigma$ --- числа.
 Введём следующее понятие --- \textit{расстояние Махаланобиса}:
 \begin{gather*}
-r^2_M(\mathbf{x}, \mu, \Sigma) = (\mathbf{x} - \mu)^{\mathrm{T}} \Sigma^{-1} (\mathbf{x} - \mu).
+r^2_M(\mathbf{x}, \bm\mu, \bm\Sigma) = (\mathbf{x} - \bm\mu)^{\mathrm{T}} \bm\Sigma^{-1} (\mathbf{x} - \bm\mu).
 \end{gather*}
-Отметим, что $\Sigma$ в данном случае является неотрицательно определённой симметричной матрицей. Но так как ковариационная матрица удовлетворяет данному условию, то получаем, что если расстояния Махаланобиса совпадают, то и плотности многомерного нормального распределения тоже. Посмотрим, что будет являться расстоянием Махаланобиса в одномерном случае ($p = 1$):
+Отметим, что $\bm\Sigma$ в данном случае является неотрицательно определённой симметричной матрицей. Но так как ковариационная матрица удовлетворяет данному условию, то получаем, что если расстояния Махаланобиса совпадают, то и плотности многомерного нормального распределения тоже. Посмотрим, что будет являться расстоянием Махаланобиса в одномерном случае ($p = 1$):
 \begin{gather*}
-\sqrt{\frac{(x - \mu)^2}{\sigma^2}} = \frac{|x - \mu|}{\sigma}=r_M(x,\mu,\sigma^2) \text{ --- \textit{расстояние до мат.ож., измеренное в $\sigma$}}.
+\sqrt{\frac{(x - \bm\mu)^2}{\sigma^2}} = \frac{|x - \bm\mu|}{\sigma}=r_M(x,\bm\mu,\sigma^2) \text{ --- \textit{расстояние до мат.ож., измеренное в $\sigma$}}.
 \end{gather*}
 \textbf{На выборочном языке:} $$\frac{|x_i - \overline{x}|}{s_i}.$$
 Таким образом, если у нас есть нормальное распределение, то в одномерном случае мы можем измерять расстояние в сигмах, а в случае многомерного нормального распределения мы смотрим на линии уровня (точки, находящиеся на одном расстоянии Махаланобиса от центра).
@@ -230,11 +230,11 @@ r^2_M(\mathbf{x}, \mu, \Sigma) = (\mathbf{x} - \mu)^{\mathrm{T}} \Sigma^{-1} (\m
 
 Сначала делаем поворот, а затем стандартизуем. Такое преобразование еще называется ``отбеливанием''.
 
-Пусть $\zeta = \Sigma^{-1/2} (\xi - \mu)$ --- новая случайная величина, полученная из исходной линейным преобразованием. несложно сосчитать, что $\mathrm{E}\zeta = \mathbb{O}$, так как $$\mathrm{E} \zeta = \Sigma^{-1/2} (\mathrm{E} \xi - \mu) = \mathbb{O}.$$
+Пусть $\zeta = \bm\Sigma^{-1/2} (\xi - \bm\mu)$ --- новая случайная величина, полученная из исходной линейным преобразованием. несложно сосчитать, что $\mathrm{E}\zeta = \mathbb{O}$, так как $$\mathrm{E} \zeta = \bm\Sigma^{-1/2} (\mathrm{E} \xi - \bm\mu) = \mathbb{O}.$$
 Посчитаем ковариацию $\zeta$:
-%\footnote{В данном доказательстве воспользовались симметричностью и неотрицательной определённостью ковариационной матрицы $\Sigma$.}
+%\footnote{В данном доказательстве воспользовались симметричностью и неотрицательной определённостью ковариационной матрицы $\bm\Sigma$.}
 \begin{gather*}
-\text{Cov} (\zeta) = \mathrm{E} \zeta \zeta^{\mathrm{T}} =\Sigma^{-1/2} \text{Cov} (\xi) \Sigma^{-1/2} = \Sigma^{-1/2} \underbrace{\Sigma^1}_{\mathrm{E}\xi \xi^{\mathrm{T}}} \Sigma^{-1/2} = \mathbb{I}.
+\text{Cov} (\zeta) = \mathrm{E} \zeta \zeta^{\mathrm{T}} =\bm\Sigma^{-1/2} \text{Cov} (\xi) \bm\Sigma^{-1/2} = \bm\Sigma^{-1/2} \underbrace{\bm\Sigma^1}_{\mathrm{E}\xi \xi^{\mathrm{T}}} \bm\Sigma^{-1/2} = \mathbb{I}.
 \end{gather*}
 
 
@@ -251,7 +251,7 @@ r^2_M(\mathbf{x}, \mu, \Sigma) = (\mathbf{x} - \mu)^{\mathrm{T}} \Sigma^{-1} (\m
 		\end{minipage}
 	\end{center}
 	\item Условное математическое ожидание является линейной функцией.
-	\item Ковариационная матрица $\Sigma$ может быть вырожденной:\footnote{Например, когда двумерное распределение сосредоточено на одной прямой.}
+	\item Ковариационная матрица $\bm\Sigma$ может быть вырожденной:\footnote{Например, когда двумерное распределение сосредоточено на одной прямой.}
 	\begin{center}
 		\begin{minipage}{0.4\linewidth}
 			\centering
@@ -266,9 +266,9 @@ r^2_M(\mathbf{x}, \mu, \Sigma) = (\mathbf{x} - \mu)^{\mathrm{T}} \Sigma^{-1} (\m
 Пусть $\xi$ --- $p$-мерная случайная величина, $p$ --- количество признаков. Считаем, что среднее равно нулю. Хотим образовать новый признак, который является линейной комбинацией старых признаков (смысл в том, чтобы сделать так, чтобы новый признак был в некотором смысле лучше, чем старые):
 \begin{gather*}
 \eta = \mathbf{A}^{\mathrm{T}}\xi = \xi^{\mathrm{T}} \mathbf{A} = a_1 \xi_1 + \ldots + a_p \xi_p, \hspace{0.3 cm} \mathbf{A} \in \mathbb{R}^p,\\
-\mathrm{D}\eta = \mathbf{A}^{\mathrm{T}} \mathbf{\Sigma} \mathbf{A}.
+\mathrm{D}\eta = \mathbf{A}^{\mathrm{T}} \mathbf{\bm\Sigma} \mathbf{A}.
 \end{gather*}
-Теперь пусть $\eta = (\eta_1, \ldots, \eta_d)^{\mathrm{T}} \in \mathbb{R}^d$ --- $d$-мерная случайная величина, т.е. $d$ --- число новых признаков, которая получается из исходной как $\eta = \mathbb{A}^{\mathrm{T}} \xi$, где $\mathbb{A} \in \mathbb{R}^{p\times d}$. Соответствующая ковариационная матрица будет иметь вид $\mathrm{Cov} (\eta) = \mathbb{A}^{\mathrm{T}} \mathbf{\Sigma} \mathbb{A}$.
+Теперь пусть $\eta = (\eta_1, \ldots, \eta_d)^{\mathrm{T}} \in \mathbb{R}^d$ --- $d$-мерная случайная величина, т.е. $d$ --- число новых признаков, которая получается из исходной как $\eta = \mathbb{A}^{\mathrm{T}} \xi$, где $\mathbb{A} \in \mathbb{R}^{p\times d}$. Соответствующая ковариационная матрица будет иметь вид $\mathrm{Cov} (\eta) = \mathbb{A}^{\mathrm{T}} \mathbf{\bm\Sigma} \mathbb{A}$.
 
 \textbf{На выборочном языке:} $Z = \sum\limits_{j = 1}^{p} a_j X_j = \mathbb{X} A \in \mathbb{R}^n$ или $\mathbb{Z} = \mathbb{X} \mathbb{A} \in \mathbb{R}^{p \times d}$, где $\mathbb{X} \in \mathbb{R}^{n \times p}$ --- матрица данных.
 \\
@@ -366,12 +366,12 @@ A = \sum\limits_{i = 1}^d <A, U_i> U_i, \text{ где $<A, U_i>$ --- $i$-ая к
 \end{gather}
 $\Arrowvert Q_j\Arrowvert = 1$, $\Arrowvert F_j\Arrowvert \neq 1$ в разложении \eqref{2}. Давайте нормируем $F$. Пусть $\sigma_j = \Arrowvert F_j\Arrowvert$, $P_j = \frac{F_j}{\Arrowvert F_j\Arrowvert}$, тогда $\Arrowvert Q_j\Arrowvert = \Arrowvert P_j\Arrowvert = 1$ и
 \begin{gather}\label{3}
-\mathbb{X} = \sum\limits_{j = 1}^d \sigma_j Q_j P_j^{\mathrm{T}} = \mathbb{Q} \mathbf{\Sigma} \mathbb{P}^{\mathrm{T}}, \text{ где $\mathbf{\Sigma} = \diag\{\sigma_1, \ldots, \sigma_d\}$.}
+\mathbb{X} = \sum\limits_{j = 1}^d \sigma_j Q_j P_j^{\mathrm{T}} = \mathbb{Q} \mathbf{\bm\Sigma} \mathbb{P}^{\mathrm{T}}, \text{ где $\mathbf{\bm\Sigma} = \diag\{\sigma_1, \ldots, \sigma_d\}$.}
 \end{gather}
 \textit{Что за матрица $Q_jP_j^{\mathrm{T}} \in \mathbb{R}^{n \times p}$?} Можно заметить, что $\rnk(Q_jP_j^{\mathrm{T}}) = 1$; действительно, столбцы матрицы пропорциональны; то же самое для строк. Таким образом, у нас была исходная матрица ранга $d$, а мы превратили её в сумму $d$ элементарных матриц ранга 1.
 
 %\begin{proposition}
-%	$\mathbf{\Sigma}\mathbb{P}^{\mathrm{T}} = \mathbb{F}^{\mathrm{T}}$.
+%	$\mathbf{\bm\Sigma}\mathbb{P}^{\mathrm{T}} = \mathbb{F}^{\mathrm{T}}$.
 %\end{proposition}
 %\begin{proof}[Доказательство.]
 %	\textcolor{red}{И это бы надо бы пояснить}
