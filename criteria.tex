@@ -626,7 +626,7 @@ x <- 2
 cdf <- pnorm(x, mean = a, sd = sd) #cumulative distribution function (cdf)
 print(cdf)
 
-x <- qnorm(cdf) #inverse to this cdf
+x <- qnorm(cdf, mean = a, sd = sd) #inverse to this cdf
 print(x)
 
 #chi-square distribution chi2(m), where m is degree of freedom
