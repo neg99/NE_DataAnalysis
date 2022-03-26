@@ -106,7 +106,7 @@ p(x) = \pi_1 p(x, \mu_1, \Sigma_1) + \ldots + \pi_k p(x, \mu_k, \Sigma_k),
 где
 \begin{equation}
 p(x, \mu_i, \Sigma_i) = \frac{1}{(2\pi)^{p/2}\sqrt{|\Sigma_i|}}
-\exp \left(-\frac{1}{2}(x - \mu_i)\Sigma_i^{-1}(x - \mu_i)^T \right)
+\exp \left(-\frac{1}{2}(x - \mu_i)^\mathrm{T}\Sigma_i^{-1}(x - \mu_i) \right)
 \end{equation}
 Эта задача решается методом максимального правдоподобия. Можно выписать функцию правдоподобия (выпишите),
 но она имеет сложный вид и искать ее максимум по такому большому числу параметров очень непросто.
