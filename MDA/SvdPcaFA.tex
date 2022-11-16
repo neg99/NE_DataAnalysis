@@ -102,17 +102,18 @@ left=3cm, right=1.5cm, top=2cm, bottom=2cm, headsep=1cm, footskip=1cm
 	
 	\intro
 	\section{Генеральный язык} \label{q2}
-Пусть случайная величина $\xi = (\xi_1, \ldots, \xi_p)^{\mathrm{T}} \in \mathbb{R}^p$, где $p$ --- количество признаков. Обозначим
+Пусть случайная величина $\bm\xi = (\xi_1, \ldots, \xi_p)^{\mathrm{T}} \in \mathbb{R}^p$, где $p$ --- количество признаков. Обозначим
 \begin{itemize}
-	\item \textit{вектор средних} $\mu = (\mathrm{E}\xi_1, \ldots, \mathrm{E}\xi_p)^{\mathrm{T}} \in \mathbb{R}^p$;
-	\item \textit{ковариационную матрицу} $\Sigma = \mathrm{Cov} \xi = \mathrm{E}(\xi - \mathrm{E} \xi) (\xi - \mathrm{E} \xi)^{\mathrm{T}} \in \mathbb{R}^{p \times p}$.
+	\item \textit{вектор средних} $\bm\mu = (\textsf{E}\xi_1, \ldots, \textsf{E}\xi_p)^{\mathrm{T}} \in \mathbb{R}^p$;
+	\item \textit{ковариационную матрицу} $\bm\Sigma = \mathrm{Cov\,} \bm\xi = \textsf{E}(\bm\xi - \textsf{E} \bm\xi) (\bm\xi - \textsf{E} \bm\xi)^{\mathrm{T}} \in \mathbb{R}^{p \times p}$.
 \end{itemize}
 
 Рассмотрим два случая:
 \begin{itemize}
-	\item \textit{Центрированные данные}: $\xi^{(c)} = \xi - \mathrm{E} \xi$. Тогда ковариационная матрица будет иметь вид: $\mathrm{Cov}\xi^{(c)} = \mathrm{E}\xi^{(c)}(\xi^{(c)})^{\mathrm{T}}$.
-	\item \textit{Стандартизованные данные}: $\xi_i^{(s)} = \frac{\xi_i - \mathrm{E}\xi_i}{\sqrt{\mathrm{D}\xi_i}}$ для каждой $\xi_i$, $i$-ой компоненты вектора $\xi$. Запишем теперь это в матричном виде:
-	 введём $\Delta$ --- диагональную матрицу, состоящую из элементов $\sqrt{\mathrm{D} \xi_i}$ для $i = 1, \ldots, p$. Тогда $\xi^{(s)} = \Delta^{-1} \xi^{(c)} \Rightarrow \mathrm{Corr} (\xi) = \mathrm{Cov} (\xi^{(s)})$, то есть $\mathrm{Cov}(\xi^{(s)})$ --- это корреляционная матрица до стандартизации.
+	\item \textit{Центрированные данные}: $\bm\xi^{(c)} = 
+\bm\xi - \textsf{E} \bm\xi$. Тогда ковариационная матрица будет иметь вид: $\mathrm{Cov}\bm\xi^{(c)} = \textsf{E}\bm\xi^{(c)}(\bm\xi^{(c)})^{\mathrm{T}}$.
+	\item \textit{Стандартизованные данные}: $\xi_i^{(s)} = \frac{\xi_i - \textsf{E}\xi_i}{\sqrt{\textsf{D}\xi_i}}$ для каждой $\xi_i$, $i$-ой компоненты вектора $\xi$. Запишем теперь это в матричном виде:
+	 введём $\bm\Delta$ --- диагональную матрицу, состоящую из элементов $\sqrt{\textsf{D} \xi_i}$ для $i = 1, \ldots, p$. Тогда $\bm\xi^{(s)} = \bm\Delta^{-1} \bm\xi^{(c)} \Rightarrow \mathrm{Corr\,} (\bm\xi) = \mathrm{Cov} (\bm\xi^{(s)})$, то есть $\mathrm{Cov}(\bm\xi^{(s)})$ --- это корреляционная матрица до стандартизации.
 \end{itemize}
 
 \section{Выборочный язык}
@@ -153,7 +154,7 @@ $$\mathbb{X} = \begin{pmatrix}
 	\end{gather*}
 	
 	\item $\mathbb{S} = \frac{1}{n}(\mathbb{X}^{(c)})^{\mathrm{T}}\mathbb{X}^{(c)}$ --- \textit{выборочная ковариационная матрица}.
-	\item $\widehat{\mathrm{Corr}} \xi = \frac{1}{n}(\mathbb{X}^{(s)})^{\mathrm{T}}\mathbb{X}^{(s)}$ --- \textit{выборочная корреляционная матрица}.
+	\item $\widehat{\mathrm{Corr} \xi} = \frac{1}{n}(\mathbb{X}^{(s)})^{\mathrm{T}}\mathbb{X}^{(s)}$ --- \textit{выборочная корреляционная матрица}.
 \end{itemize}
 \section{Примеры данных до стандартизации и после}
 Зададимся вопросом, как выглядят данные до стандартизации и после неё? \\
@@ -191,7 +192,7 @@ $$\mathbb{X} = \begin{pmatrix}
 \end{enumerate}
 
 \section{Многомерное нормальное распределение}\label{q1}
-Рассмотрим $\xi \sim \mathrm{N}_p(\bm\mu,\bm\Sigma)$, где $\bm\mu = \mathrm{E} \xi$ --- среднее значение $\xi$, $\bm\Sigma = \mathrm{Cov} \xi$ --- ковариационная матрица. Предположим, что $\bm\Sigma$ --- невырожденная матрица.\footnote{$|\bm\Sigma| \neq 0$.} \textit{Плотность многомерного нормального распределения} задаётся формулой:
+Рассмотрим $\bm\xi \sim \mathrm{N}_p(\bm\mu,\bm\Sigma)$, где $\bm\mu = \textsf{E} \bm\xi$ --- вектор из средних значений $\bm\xi$, $\bm\Sigma = \mathrm{Cov} \bm\xi$ --- ковариационная матрица. Предположим, что $\bm\Sigma$ --- невырожденная матрица.\footnote{$|\bm\Sigma| \neq 0$.} \textit{Плотность многомерного нормального распределения} задаётся формулой:
 \begin{gather*}
 \mathrm{p}(\mathbf{x}, \bm\mu, \bm\Sigma) = \frac{1}{(2\pi)^{p/2} |\bm\Sigma|^{1/2}} \exp \{-\frac{1}{2} (\mathbf{x} - \bm\mu)^{\mathrm{T}}\bm\Sigma^{-1}(\mathbf{x} - \bm\mu)\} \text{ для } \forall \mathbf{x}  \in\mathbb{R}^{p}, \text{ где}
 \end{gather*}
@@ -199,7 +200,7 @@ $p$ --- количество признаков. Очевидно, что в о�
 \begin{gather*}
 p(x) = \frac{1}{\sqrt{2 \pi} \sigma} \exp \{-\frac{(x - \mu)^2}{2\sigma^2}\}, \text{ где}
 \end{gather*}
-$\bm\mu$, $\sigma$ --- числа.
+$\mu$, $\sigma$ --- числа.
 Введём следующее понятие --- \textit{расстояние Махаланобиса}:
 \begin{gather*}
 r^2_M(\mathbf{x}, \bm\mu, \bm\Sigma) = (\mathbf{x} - \bm\mu)^{\mathrm{T}} \bm\Sigma^{-1} (\mathbf{x} - \bm\mu).
@@ -230,11 +231,11 @@ r^2_M(\mathbf{x}, \bm\mu, \bm\Sigma) = (\mathbf{x} - \bm\mu)^{\mathrm{T}} \bm\Si
 
 Сначала делаем поворот, а затем стандартизуем. Такое преобразование еще называется ``отбеливанием''.
 
-Пусть $\zeta = \bm\Sigma^{-1/2} (\xi - \bm\mu)$ --- новая случайная величина, полученная из исходной линейным преобразованием. несложно сосчитать, что $\mathrm{E}\zeta = \mathbb{O}$, так как $$\mathrm{E} \zeta = \bm\Sigma^{-1/2} (\mathrm{E} \xi - \bm\mu) = \mathbb{O}.$$
+Пусть $\bm\zeta = \bm\Sigma^{-1/2} (\bm\xi - \bm\mu)$ --- новая случайная величина, полученная из исходной линейным преобразованием. несложно сосчитать, что $\textsf{E}\bm\zeta = \mathbb{O}$, так как $$\textsf{E} \bm\zeta = \bm\Sigma^{-1/2} (\textsf{E} \bm\xi - \bm\mu) = \mathbb{O}.$$
 Посчитаем ковариацию $\zeta$:
 %\footnote{В данном доказательстве воспользовались симметричностью и неотрицательной определённостью ковариационной матрицы $\bm\Sigma$.}
 \begin{gather*}
-\text{Cov} (\zeta) = \mathrm{E} \zeta \zeta^{\mathrm{T}} =\bm\Sigma^{-1/2} \text{Cov} (\xi) \bm\Sigma^{-1/2} = \bm\Sigma^{-1/2} \underbrace{\bm\Sigma^1}_{\mathrm{E}\xi \xi^{\mathrm{T}}} \bm\Sigma^{-1/2} = \mathbb{I}.
+\text{Cov} (\bm\zeta) = \textsf{E} \bm\zeta \bm\zeta^{\mathrm{T}} =\bm\Sigma^{-1/2} \text{Cov} (\bm\xi) \bm\Sigma^{-1/2} = \bm\Sigma^{-1/2} \underbrace{\bm\Sigma^1}_{\textsf{E}\bm\xi \bm\xi^{\mathrm{T}}} \bm\Sigma^{-1/2} = \mathbb{I}.
 \end{gather*}
 
 
@@ -266,7 +267,7 @@ r^2_M(\mathbf{x}, \bm\mu, \bm\Sigma) = (\mathbf{x} - \bm\mu)^{\mathrm{T}} \bm\Si
 Пусть $\xi$ --- $p$-мерная случайная величина, $p$ --- количество признаков. Считаем, что среднее равно нулю. Хотим образовать новый признак, который является линейной комбинацией старых признаков (смысл в том, чтобы сделать так, чтобы новый признак был в некотором смысле лучше, чем старые):
 \begin{gather*}
 \eta = \mathbf{A}^{\mathrm{T}}\xi = \xi^{\mathrm{T}} \mathbf{A} = a_1 \xi_1 + \ldots + a_p \xi_p, \hspace{0.3 cm} \mathbf{A} \in \mathbb{R}^p,\\
-\mathrm{D}\eta = \mathbf{A}^{\mathrm{T}} \mathbf{\bm\Sigma} \mathbf{A}.
+\textsf{D}\eta = \mathbf{A}^{\mathrm{T}} \mathbf{\bm\Sigma} \mathbf{A}.
 \end{gather*}
 Теперь пусть $\eta = (\eta_1, \ldots, \eta_d)^{\mathrm{T}} \in \mathbb{R}^d$ --- $d$-мерная случайная величина, т.е. $d$ --- число новых признаков, которая получается из исходной как $\eta = \mathbb{A}^{\mathrm{T}} \xi$, где $\mathbb{A} \in \mathbb{R}^{p\times d}$. Соответствующая ковариационная матрица будет иметь вид $\mathrm{Cov} (\eta) = \mathbb{A}^{\mathrm{T}} \mathbf{\bm\Sigma} \mathbb{A}$.
 
@@ -939,7 +940,7 @@ $$\mathbb{X}=\mathbb{V}_{1,r}\mathbb{F}_{1,r}^\mathrm{T}+\mathbb{V}_{r+1,d}\math
 
 В этом пункте введем понятие общности и уникальности признаков.
 
-Обозначим $\bm\xi'= \mathbb{F}_r \bm\eta$, тогда $\bm\xi = \bm\xi'+\bm\varepsilon$. То есть $\bm\xi'$ --- это та часть данных, которая описывается факторами. Предполагаем, что $\mathrm{D}\xi_i=1,$ $\mathrm{D}\varepsilon_i=\sigma_i^2,$ тогда $\mathrm{D}\xi_i'=\mathrm{D}\xi_i-\mathrm{D}\varepsilon_i= 1-\sigma_i^2.$
+Обозначим $\bm\xi'= \mathbb{F}_r \bm\eta$, тогда $\bm\xi = \bm\xi'+\bm\varepsilon$. То есть $\bm\xi'$ --- это та часть данных, которая описывается факторами. Предполагаем, что $\textsf{D}\xi_i=1,$ $\textsf{D}\varepsilon_i=\sigma_i^2,$ тогда $\textsf{D}\xi_i'=\textsf{D}\xi_i-\textsf{D}\varepsilon_i= 1-\sigma_i^2.$
 
 Можно заметить, что $\text{Cov}(\xi_i, \xi_j)=\text{Cov}(\xi_i'+\varepsilon_i, \xi_j'+\varepsilon_j) = \text{Cov}(\xi_i', \xi_j')$, так как остальные слагаемые обнуляются из-за некоррелированности. Получаем, что $\text{Cov}(\xi_i', \xi_j')=\rho_{ij}$. Также известно, что ковариационная матрица $\bm\xi'$ равна $\text{Cov} (\bm\xi') = \mathbb{F}_r \text{Cov}(\bm\eta) \mathbb{F}_r^\mathrm{T} = \mathbb{F}_r\mathbb{F}_r^\mathrm{T}.$
 
@@ -956,14 +957,14 @@ $$\mathbb{X}=\mathbb{V}_{1,r}\mathbb{F}_{1,r}^\mathrm{T}+\mathbb{V}_{r+1,d}\math
 Мы получили, что
 
 \begin{equation*}
-1 = \mathrm{D}\xi_i = \mathrm{D}\xi_i'+\mathrm{D}\varepsilon_i = \underbrace{(1-\sigma_i^2)}_{\substack{\text{commonality}, \\  \text{общность признака}}} + \underbrace{\sigma_i^2}_{\substack{\text{uniquence}, \\  \text{уникальность}}}.
+1 = \textsf{D}\xi_i = \textsf{D}\xi_i'+\textsf{D}\varepsilon_i = \underbrace{(1-\sigma_i^2)}_{\substack{\text{commonality}, \\  \text{общность признака}}} + \underbrace{\sigma_i^2}_{\substack{\text{uniquence}, \\  \text{уникальность}}}.
 \end{equation*}
 
 
 \begin{remark}
  Общность является множественным коэффициентом корреляции:
  \begin{equation*}
-\underbrace{\mathrm{D}\xi_i'}_{\text{общность}} = (\mathbb{F}_r\mathbb{F}_r^\mathrm{T})_{ii} = f_{i1}^2+f_{i2}^2+\ldots+f_{ir}^2 = \sum\limits_{j=1}^r f_{ij}^2 = \sum \limits_{j=1}^r (\rho(\xi_i,\eta_j))^2 = R^2(\xi_i | \eta_1,\ldots, \eta_r),
+\underbrace{\textsf{D}\xi_i'}_{\text{общность}} = (\mathbb{F}_r\mathbb{F}_r^\mathrm{T})_{ii} = f_{i1}^2+f_{i2}^2+\ldots+f_{ir}^2 = \sum\limits_{j=1}^r f_{ij}^2 = \sum \limits_{j=1}^r (\rho(\xi_i,\eta_j))^2 = R^2(\xi_i | \eta_1,\ldots, \eta_r),
  \end{equation*}
  т.к. $\eta_i$ и $\eta_j$ некоррелированы.
 \end{remark}
@@ -1140,7 +1141,7 @@ $\widetilde{\mathbb{V}}$ --- новые факторы, $\widetilde{\mathbb{F}}_
 
 Если мы допускаем косоугольные вращения, то, вообще говоря, $\mathbb{W}^{-1}\ne\mathbb{W}^{\mathrm{T}}$. Мы хотим, чтобы новые факторы после вращения были по-прежнему нормированы (то есть дисперсия была равна 1 на языке случайных величин). Мы предполагаем, что все центрировано. Тогда
 \begin{equation*}
-\text{Cov}(\widetilde{\bm\eta})=\mathrm{E}\widetilde{\bm\eta}\widetilde{\bm\eta}^\mathrm{T} = \mathrm{E}(\mathbb{W}\bm\eta\bm\eta^\mathrm{T}\mathbb{W}^\mathrm{T}) = \mathbb{W} \underbrace{\text{Cov}\,\bm\eta}_{\mathbb{I}_{r\times r}} \mathbb{W}^\mathrm{T} = \mathbb{W}\mathbb{W}^\mathrm{T},
+\text{Cov}(\widetilde{\bm\eta})=\textsf{E}\widetilde{\bm\eta}\widetilde{\bm\eta}^\mathrm{T} = \textsf{E}(\mathbb{W}\bm\eta\bm\eta^\mathrm{T}\mathbb{W}^\mathrm{T}) = \mathbb{W} \underbrace{\text{Cov}\,\bm\eta}_{\mathbb{I}_{r\times r}} \mathbb{W}^\mathrm{T} = \mathbb{W}\mathbb{W}^\mathrm{T},
 \end{equation*}
 будем требовать, чтобы на диагонали этой матрицы стояли единицы.
 
@@ -1169,7 +1170,7 @@ $\widetilde{\mathbb{V}}$ --- новые факторы, $\widetilde{\mathbb{F}}_
 \begin{proof}
 Распишем, чему равно $\Phi$:
 \begin{equation*}
-\Phi = \text{Cov}(\bm\xi,\widetilde{\bm\eta})=\mathrm{E}(\bm\xi'\widetilde{\bm\eta}^\mathrm{T}) = \mathrm{E}(\widetilde{\mathbb{F}}\widetilde{\bm\eta}\widetilde{\bm\eta}^\mathrm{T}) = \widetilde{\mathbb{F}}\text{Cov}(\widetilde{\bm\eta}) =  \widetilde{\mathbb{F}}\mathbb{W}\mathbb{W}^\mathrm{T}.
+\Phi = \text{Cov}(\bm\xi,\widetilde{\bm\eta})=\textsf{E}(\bm\xi'\widetilde{\bm\eta}^\mathrm{T}) = \textsf{E}(\widetilde{\mathbb{F}}\widetilde{\bm\eta}\widetilde{\bm\eta}^\mathrm{T}) = \widetilde{\mathbb{F}}\text{Cov}(\widetilde{\bm\eta}) =  \widetilde{\mathbb{F}}\mathbb{W}\mathbb{W}^\mathrm{T}.
 \end{equation*}
 В случае ортогональных вращений $\mathbb{W}^{-1}=\mathbb{W}^{\mathrm{T}}$, следовательно $\Phi = \widetilde{\mathbb{F}}\underbrace{\mathbb{W}\mathbb{W}^\mathrm{T}}_{\mathbb{I}_{r \times r}} = \widetilde{\mathbb{F}}$.
 \end{proof}
