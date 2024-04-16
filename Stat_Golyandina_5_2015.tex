@@ -2921,7 +2921,7 @@ t=z=\sqrt{n}\frac{(\bar{x}-{a}_{0})}{\sigma}\xrightarrow[n\to\infty]{}\N(0,1)
 \]
  \end{prop*}
 \begin{prop*}
-При условии $\xi\sim \N(a,\sigma^2)$,
+При условии $\xi\sim \N(a,\sigma^2)$
 \[
 t=z\sim\N(0,1).
 \]
@@ -2954,7 +2954,7 @@ t=\sqrt{n-1}\,\frac{\bar{x}-{a}_{0}}{s}=\sqrt{n}\,\frac{\bar{x}-{a}_{0}}{\tilde{
 
 
 \begin{prop*}
-При условии нормальности данных,
+При условии $\xi\sim \N(a,\sigma^2)$
 \[
 t\sim\t(n-1).
 \]
@@ -3013,7 +3013,7 @@ $s^{2}/\sigma_{0}^{2}$ (или $s_{{a}}^2/\sigma_{0}^{2}$ если ${a}$
 
 \subsection{$\protect\E\xi={a}<\infty$}
 \begin{prop*}
-Пусть $\E\xi={a}<\infty$; При условии нормальности данных используется
+Пусть $\E\xi={a}<\infty$. При условии $\xi\sim \N(a,\sigma^2)$ используется
 следующая статистика:
 \[
 \chi^{2}=n\frac{s_{{a}}^{2}}{\sigma_{0}^{2}}\sim\chi^{2}(n).
@@ -3029,7 +3029,7 @@ $s^{2}/\sigma_{0}^{2}$ (или $s_{{a}}^2/\sigma_{0}^{2}$ если ${a}$
 
 \subsection{$\protect\E\xi$ неизвестно}
 \begin{prop*}
-Пусть $\E\xi$ неизвестно. При условии нормальности данных используется
+Пусть $\E\xi$ неизвестно. При условии $\xi\sim \N(a,\sigma^2)$ используется
 следующая статистика:
 \[
 \chi^{2}=n\frac{s^{2}}{\sigma_{0}^{2}}=(n-1)\frac{\tilde{s}^{2}}{\sigma_{0}^{2}}\sim\chi^{2}(n-1).
@@ -3125,12 +3125,12 @@ $\left[b_{1},b_{2}\right]$ --- \emph{доверительный интервал
 \section{Доверительный интервал для проверки гипотезы о значении параметра}
 
 Зафиксируем $H_{0}:\th=\th_{0}$ и $\gamma=1-\alpha$, где $\a$ играет
-роль уровня значимости. По определению доверительного интервала, $\P(\theta\in\left[a_{\gamma}(\mathbf{x}),b_{\gamma}(\mathbf{x})\right])=\gamma.$
+роль уровня значимости. По определению доверительного интервала, $\P(\theta\in\left[b_1(\mathbf{x}),b_1(\mathbf{x})\right])=\gamma.$
 Тогда
 \[
 \P(\theta\in\left[b_1(\mathbf{x}),b_2(\mathbf{x})\right])=
-\gamma=1-\a \implies\a=1-\P(\theta\in\left[a_{\gamma}(\mathbf{x}),b_{\gamma}(\mathbf{x})\right])=
-\P(\th\not\in\left[a_{\gamma}(\mathbf{x}),b_{\gamma}(\mathbf{x})\right]).
+\gamma=1-\a \implies\a=1-\P(\theta\in\left[b_1(\mathbf{x}),b_2(\mathbf{x})\right])=
+\P(\th\not\in\left[b_1(\mathbf{x}),b_2(\mathbf{x})\right]).
 \]
  %и $\Ascr_{\text{крит}}=\RR\setminus\left[b_1(\mathbf{x}),b_2(\mathbf{x})\right].$
 Соответственно,
