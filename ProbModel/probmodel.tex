@@ -1,0 +1,314 @@
+%% LyX 2.1.4 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+%\documentclass[oneside,english,russian, 14pt]{scrbook}
+\documentclass[english,russian, 12pt]{book}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2.5cm,lmargin=2cm,rmargin=2cm}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{color}
+\usepackage{babel}
+\usepackage{array}
+\usepackage{verbatim}
+\usepackage{latexsym}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{esint}
+\usepackage[unicode=true,pdfusetitle,
+ bookmarks=true,bookmarksnumbered=false,bookmarksopen=true,bookmarksopenlevel=1,
+ breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=true]
+ {hyperref}
+\usepackage{breakurl}
+\usepackage{bm}
+\usepackage{comment}
+\includecomment{teacher}
+%\excludecomment{teacher}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\DeclareRobustCommand{\cyrtext}{%
+  \fontencoding{T2A}\selectfont\def\encodingdefault{T2A}}
+\DeclareRobustCommand{\textcyr}[1]{\leavevmode{\cyrtext #1}}
+\AtBeginDocument{\DeclareFontEncoding{T2A}{}{}}
+
+%% Special footnote code from the package 'stblftnt.sty'
+%% Author: Robin Fairbairns -- Last revised Dec 13 1996
+\let\SF@@footnote\footnote
+\def\footnote{\ifx\protect\@typeset@protect
+    \expandafter\SF@@footnote
+  \else
+    \expandafter\SF@gobble@opt
+  \fi
+}
+\expandafter\def\csname SF@gobble@opt \endcsname{\@ifnextchar[%]
+  \SF@gobble@twobracket
+  \@gobble
+}
+\edef\SF@gobble@opt{\noexpand\protect
+  \expandafter\noexpand\csname SF@gobble@opt \endcsname}
+\def\SF@gobble@twobracket[#1]#2{}
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+ \theoremstyle{definition}
+ \newtheorem*{defn*}{\protect\definitionname}
+  \theoremstyle{remark}
+  \newtheorem*{rem*}{\protect\remarkname}
+  \theoremstyle{plain}
+  \newtheorem*{cor*}{\protect\corollaryname}
+  \theoremstyle{definition}
+  \newtheorem*{example*}{\protect\examplename}
+  \theoremstyle{remark}
+  \newtheorem*{claim*}{\protect\claimname}
+  \theoremstyle{definition}
+  \ifx\thechapter\undefined
+    \newtheorem{example}{\protect\examplename}
+  \else
+    \newtheorem{example}{\protect\examplename}[chapter]
+  \fi
+  \theoremstyle{plain}
+  \newtheorem*{prop*}{\protect\propositionname}
+  \theoremstyle{definition}
+  \newtheorem*{xca*}{\protect\exercisename}
+  \theoremstyle{plain}
+  \newtheorem*{thm*}{\protect\theoremname}
+ \newenvironment{solution}
+   {\renewcommand\qedsymbol{$\lrcorner$}
+    \begin{proof}[\solutionname]}
+   {\end{proof}}
+  \theoremstyle{definition}
+  \ifx\thechapter\undefined
+    \newtheorem{xca}{\protect\exercisename}
+  \else
+    \newtheorem{xca}{\protect\exercisename}[chapter]
+  \fi
+\newenvironment{lyxcode}
+{\par\begin{list}{}{
+\setlength{\rightmargin}{\leftmargin}
+\setlength{\listparindent}{0pt}% needed for AMS classes
+\raggedright
+\setlength{\itemsep}{0pt}
+\setlength{\parsep}{0pt}
+\normalfont\ttfamily}%
+ \item[]}
+{\end{list}}
+  \theoremstyle{plain}
+  \newtheorem*{assumption*}{\protect\assumptionname}
+  \theoremstyle{remark}
+  \newtheorem*{notation*}{\protect\notationname}
+
+\@ifundefined{date}{}{\date{}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+%\usepackage{nicefrac}
+%\usepackage{colortbl}
+%\usepackage[noend]{algpseudocode}
+%\usepackage{xypic}
+\usepackage{eso-pic}
+
+%\renewenvironment{example*}
+%                  {\renewcommand\qedsymbol{$\lrcorner$}
+%                   \begin{proof}[Пример]}
+%                  {\end{proof}}
+
+%\usepackage[columns=1,itemlayout=singlepar,totoc=true]{idxlayout}
+
+\usepackage[columns=1,itemlayout=singlepar,totoc=true]{idxlayout}
+
+\@addtoreset{chapter}{part}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\cdf}{cdf}
+\DeclareMathOperator{\ecdf}{ecdf}
+\DeclareMathOperator{\qnt}{qnt}
+\DeclareMathOperator{\pdf}{pdf}
+\DeclareMathOperator{\pmf}{pmf}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\bias}{bias}
+\DeclareMathOperator{\MSE}{MSE}
+\DeclareMathOperator{\med}{med}
+\DeclareMathOperator{\Exp}{Exp}
+\DeclareMathOperator{\Bin}{Bin}
+\DeclareMathOperator{\Ber}{Ber}
+\DeclareMathOperator{\Geom}{Geom}
+\DeclareMathOperator{\Pois}{Pois}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator{\cor}{cor}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Lin}{Lin}
+\DeclareMathOperator{\SE}{SE}
+\DeclareMathOperator{\SD}{SD}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\proj}{proj}
+\DeclareMathOperator{\colspace}{colspace}
+\DeclareMathOperator*{\plim}{plim}
+\DeclareMathOperator{\corr}{corr}
+\DeclareMathOperator{\supp}{supp}
+
+\newcommand{\bigperp}{%
+  \mathop{\mathpalette\bigp@rp\relax}%
+  \displaylimits
+}
+
+\newcommand{\bigp@rp}[2]{%
+  \vcenter{
+    \m@th\hbox{\scalebox{\ifx#1\displaystyle2.1\else1.5\fi}{$#1\perp$}}
+  }%
+}
+
+\newcommand{\bignparallel}{%
+  \mathop{\mathpalette\bignp@rp\relax}%
+  \displaylimits
+}
+
+\newcommand{\bignp@rp}[2]{%
+  \vcenter{
+    \m@th\hbox{\scalebox{\ifx#1\displaystyle2.1\else1.5\fi}{$#1\nparallel$}}
+  }%
+}
+
+\renewenvironment{cases}{%
+ \begin{dcases}%
+}{%
+ \end{dcases}%\kern-\nulldelimiterspace%
+}
+
+\newcommand{\notimplies}{%
+  \mathrel{{\ooalign{\hidewidth$\not\phantom{=}$\hidewidth\cr$\implies$}}}}
+
+\newcommand{\notiff}{%
+  \mathrel{{\ooalign{\hidewidth$\not\phantom{"}$\hidewidth\cr$\iff$}}}}
+
+\AtBeginDocument{
+  \def\labelitemii{\(\Diamond\)}
+  \def\labelitemiii{\(\Box\)}
+}
+
+\makeatother
+
+  \addto\captionsenglish{\renewcommand{\assumptionname}{Assumption}}
+  \addto\captionsenglish{\renewcommand{\claimname}{Claim}}
+  \addto\captionsenglish{\renewcommand{\corollaryname}{Corollary}}
+  \addto\captionsenglish{\renewcommand{\definitionname}{Definition}}
+  \addto\captionsenglish{\renewcommand{\examplename}{Example}}
+  \addto\captionsenglish{\renewcommand{\exercisename}{Exercise}}
+  \addto\captionsenglish{\renewcommand{\notationname}{Notation}}
+  \addto\captionsenglish{\renewcommand{\propositionname}{Proposition}}
+  \addto\captionsenglish{\renewcommand{\remarkname}{Remark}}
+  \addto\captionsenglish{\renewcommand{\theoremname}{Theorem}}
+  \addto\captionsrussian{\renewcommand{\assumptionname}{Предположение}}
+  \addto\captionsrussian{\renewcommand{\claimname}{Утверждение}}
+  \addto\captionsrussian{\renewcommand{\corollaryname}{Следствие}}
+  \addto\captionsrussian{\renewcommand{\definitionname}{Определение}}
+  \addto\captionsrussian{\renewcommand{\examplename}{Пример}}
+  \addto\captionsrussian{\renewcommand{\exercisename}{Упражнение}}
+  \addto\captionsrussian{\renewcommand{\notationname}{Обозначение}}
+  \addto\captionsrussian{\renewcommand{\propositionname}{Предложение}}
+  \addto\captionsrussian{\renewcommand{\remarkname}{Замечание}}
+  \addto\captionsrussian{\renewcommand{\theoremname}{Теорема}}
+  \providecommand{\assumptionname}{Предположение}
+  \providecommand{\claimname}{Утверждение}
+  \providecommand{\corollaryname}{Следствие}
+  \providecommand{\definitionname}{Определение}
+  \providecommand{\examplename}{Пример}
+  \providecommand{\exercisename}{Упражнение}
+  \providecommand{\notationname}{Обозначение}
+  \providecommand{\propositionname}{Предложение}
+  \providecommand{\remarkname}{Замечание}
+  \providecommand{\theoremname}{Теорема}
+ \addto\captionsenglish{\renewcommand{\solutionname}{Solution}}
+ \addto\captionsrussian{\renewcommand{\solutionname}{Решение}}
+ \providecommand{\solutionname}{Решение}
+
+\begin{document}
+\global\long\def\N{\mathrm{N}}
+\global\long\def\P{\mathsf{P}}
+\global\long\def\E{\mathsf{E}}
+\global\long\def\D{\mathsf{D}}
+\global\long\def\O{\Omega}
+\global\long\def\F{\mathcal{F}}
+\global\long\def\K{\mathsf{K}}
+%\global\long\def\Ascr{\mathscr{A}}
+\global\long\def\Ascr{A}
+\global\long\def\Pcal{\mathcal{P}}
+\global\long\def\th{\theta}
+\global\long\def\toas{\xrightarrow{\textrm{a.s.}}}
+\global\long\def\toP{\xrightarrow{\P}}
+\global\long\def\tod{\xrightarrow{\mathrm{d}}}
+\global\long\def\iid{\mathrm{i.i.d.}}
+\global\long\def\T{\mathsf{T}}
+\global\long\def\L{\mathsf{L}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\a{\alpha}
+\global\long\def\b{\beta}
+\global\long\def\t{\mathrm{t}}
+\global\long\def\RR{\mathbb{R}}
+\global\long\def\d{\,\mathrm{d}}
+\global\long\def\U{\mathrm{U}}
+\global\long\def\thb{\boldsymbol{\theta}}
+\global\long\def\I{\mathrm{I}}
+\global\long\def\II{\mathrm{II}}
+\global\long\def\ein{\mathbf{1}}
+\global\long\def\pv{p\text{-value}}
+\global\long\def\MLE{\mathrm{MLE}}
+\global\long\def\indep{\perp\!\!\!\perp}
+\global\long\def\xib{\boldsymbol{\xi}}
+\global\long\def\Pscr{\mathscr{P}}
+\global\long\def\m{\mathsf{m}}
+\global\long\def\FWER{\mathrm{FWER}}
+\global\long\def\weak{\mathrm{weak}}
+\global\long\def\H{\mathbf{H}}
+\global\long\def\strong{\mathrm{strong}}
+\global\long\def\X{\mathbf{X}}
+\global\long\def\bb{\mathbf{b}}
+\global\long\def\y{\mathbf{y}}
+\global\long\def\eb{\boldsymbol{\epsilon}}
+\global\long\def\Db{\boldsymbol{\Delta}}
+\global\long\def\M{\mathbf{M}}
+\global\long\def\eb{\boldsymbol{\epsilon}}
+\global\long\def\S{\mathbf{S}}
+\global\long\def\R{\mathbf{R}}
+\global\long\def\A{\mathbf{A}}
+\global\long\def\B{\mathbf{B}}
+\global\long\def\OLS{\mathrm{OLS}}
+\global\long\def\mb{\boldsymbol{\mu}}
+\global\long\def\Sb{\boldsymbol{\Sigma}}
+\global\long\def\Ib{\mathbf{I}}
+\global\long\def\SST{\mathrm{SST}}
+\global\long\def\SSR{\mathrm{SSR}}
+\global\long\def\SSE{\mathrm{SSE}}
+\global\long\def\x{\mathbf{x}}
+\global\long\def\V{\mathbf{V}}
+\global\long\def\etab{\boldsymbol{\eta}}
+\global\long\def\Ell{\mathscr{L}}
+\global\long\def\p{\mathbf{p}}
+\global\long\def\Pb{\mathbf{P}}
+\global\long\def\z{\mathbf{z}}
+\global\long\def\C{\mathbf{C}}
+\global\long\def\W{\mathbf{W}}
+
+\chapter{Теория вероятностей}
+\input{01_probbase.tex}
+\newpage
+\input{02_randomvar.tex}
+\input{03_dependence.tex}
+\chapter{Статистика}
+\input{04_statbase.tex}
+\input{05_criteria.tex}
+\input{06_confint.tex}
+\input{07_estimates}
+
+\end{document}
